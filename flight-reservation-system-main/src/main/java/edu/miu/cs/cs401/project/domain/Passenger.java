@@ -24,6 +24,7 @@ public class Passenger {
 		this.email = email;
 		reservations = new ArrayList<Reservation>();
 		this.residanceAddress=residenceAdress;
+		this.agent=new Agent("na","na");
 	}
 	public Passenger(Agent agent, String id, String firstName, String lastName, LocalDate dOB, String email,Address residenceAdress) {
 		super();
@@ -37,7 +38,7 @@ public class Passenger {
 		this.agent=agent;
 	}
 	public Passenger inputPassenger() {
-		
+		Scanner sc1 = new Scanner(System.in);
 		Scanner sc = new Scanner(System.in);
 		System.out.println("id=?");
 		String id=sc.nextLine();
@@ -54,10 +55,11 @@ public class Passenger {
 		int year=sc.nextInt();
 		LocalDate dob=LocalDate.of(year, month, day);
 		System.out.println("email=?");
-		String email=sc.nextLine();
+		String email=sc1.nextLine();
 		Address a=new Address();
 		a=a.inputAddress();
 		sc.close();
+		sc1.close();
 		return new Passenger( id, firstName, lastName, dob, email,a);
 	}
 public Passenger(){}
@@ -121,7 +123,7 @@ public Passenger(){}
 	}
 	@Override
 	public String toString() {
-		return "Passenger [id = " + id + " , FirstName = " + firstName + " , LastName = " + lastName + " , DOB=" + dOB
+		return "Passenger [id = " + this.id + " , FirstName = " + firstName + " , LastName = " + lastName + " , DOB=" + dOB
 				+ " , Email=" + email + " ]";
 	}
 

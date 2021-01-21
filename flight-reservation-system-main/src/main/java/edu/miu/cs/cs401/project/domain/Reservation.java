@@ -15,6 +15,7 @@ public class Reservation {
 	public Reservation(Passenger passenger) {
 		this.reservationId = UUID.randomUUID().toString();
 		this.passenger=passenger;
+		this.agent=new Agent("na","na");
 	}
 	public Reservation(Passenger passenger,Agent agent) {
 		this.reservationId = UUID.randomUUID().toString();
