@@ -63,7 +63,7 @@ public class ReservationSystemServiceImpl implements ReservationSystemService {
 
 	@Override
 	public void confirmReservation(String reservationCode) {
-		repository.
+		repository.getReservations().get(reservationCode).confirm();
 	}
 
 	@Override
@@ -74,13 +74,13 @@ public class ReservationSystemServiceImpl implements ReservationSystemService {
 
 	@Override
 	public Collection<Flight> findFlightsFromTo(String departure, String arrival, LocalDate flightDate) {
-		// TODO Auto-generated method stub
-		return null;
+		return repository.findFlightsFromTo(departure, arrival,flightDate);
 	}
 
 	@Override
 	public void confirmReservation(String reservationCode, String agentCode) {
-		// TODO Auto-generated method stub
+		repository.getReservations().get(reservationCode).confirm();
+		repository.getReservations().get(reservationCode).setAgentId(agentCode);
 		
 	}
 
