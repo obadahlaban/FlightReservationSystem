@@ -53,12 +53,12 @@ public class ReservationSystemServiceImpl implements ReservationSystemService {
 
 	@Override
 	public Reservation createReservation(Passenger passenger, Collection<Flight> flights) {
-		return repository.crea;//todo
+		return repository.makeReservationByPassenger(passenger, flightInstances);
 	}
 
 	@Override
 	public Reservation createReservation(Agent agent, Passenger passenger, Collection<Flight> flights) {
-		return repository.crea;//todo
+		return repository.makeReservationByAgent(agent, passenger, flightInstances);
 	}
 
 	@Override
