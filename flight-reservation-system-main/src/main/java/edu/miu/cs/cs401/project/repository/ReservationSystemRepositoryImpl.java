@@ -14,6 +14,7 @@ import edu.miu.cs.cs401.project.domain.Airport;
 import edu.miu.cs.cs401.project.domain.Flight;
 import edu.miu.cs.cs401.project.domain.Passenger;
 import edu.miu.cs.cs401.project.domain.Reservation;
+import edu.miu.cs.cs401.project.domain.Ticket;
 import edu.miu.cs.cs401.project.domain.Agent;
 import edu.miu.cs.cs401.project.domain.Crew;
 import edu.miu.cs.cs401.project.domain.Pilot;
@@ -277,12 +278,26 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 		reservation.confirm();
 	}
 	
-	public void makeReservation(Passenger passenger, List<Flight>flights) {
-		//Reservation reservation =new Reservation();
+	public Reservation makeReservationByPassenger(Passenger passenger, List<FlightInstance> flightInstances) {
+		Reservation reservation = new Reservation(passenger);
+		
+		for(FlightInstance flightInstance: flightInstances) {
+			Ticket ticket = new Ticket(flightInstance, reservation);
+			reservation.addTicket(ticket);
+		}
+		
+		reservations.put(reservation.getReservationId(), reservation);
+		return reservation;
 	}
 	
-	public void makeReservation(Agent agent ,Passenger passenger, List<Flight>flights) {
-		//Reservation reservation =new Reservation();
+	public Reservation makeReservationByAgent(Agent agent ,Passenger passenger, List<FlightInstance> flightInstances) {
+		Reservation reservation =new Reservation(passenger,agent);
+		for(FlightInstance flightInstance: flightInstances) {
+			Ticket ticket = new Ticket(flightInstance, reservation);
+			reservation.addTicket(ticket);
+		}
+		reservations.put(reservation.getReservationId(), reservation);
+		return reservation;
 	}
 	
 

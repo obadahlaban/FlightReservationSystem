@@ -1,31 +1,28 @@
 package edu.miu.cs.cs401.project.domain;
 
 import java.util.List;
+import java.util.UUID;
 
 import edu.miu.cs.cs401.project.costant.Status;
 
 public class Reservation {
-	List<Ticket> tickets;
-	String reservationId;
-	String agentId=null;
-	Passenger passenger;
+	private List<Ticket> tickets;
+	private String reservationId;
+	private Agent agent;
+	private Passenger passenger;
 	private Status status=Status.NONE;
 
-	public Reservation(List<Ticket> tickets, String reservationId, String agentId, Passenger passenger) {
-		super();
-		this.tickets = tickets;
-		this.reservationId = reservationId;
-		this.agentId = agentId;
-		this.passenger = passenger;
+	public Reservation(Passenger passenger) {
+		this.reservationId = UUID.randomUUID().toString();
+		this.passenger=passenger;
 	}
-	public Reservation(List<Ticket> tickets, String reservationId,Passenger passenger) {
-		super();
-		this.tickets = tickets;
-		this.reservationId = reservationId;	
-		this.passenger = passenger;
+	public Reservation(Passenger passenger,Agent agent) {
+		this.reservationId = UUID.randomUUID().toString();
+		this.passenger=passenger;
+		this.agent=agent;
+		
 	}
 	
-
 	public Status getStatus() {
 		return status;
 	}
@@ -47,15 +44,13 @@ public class Reservation {
 	public void setReservationId(String reservationId) {
 		this.reservationId = reservationId;
 	}
-
-	public String getAgentId() {
-		return agentId;
+		
+	public Agent getAgent() {
+		return agent;
 	}
-
-	public void setAgentId(String agentId) {
-		this.agentId = agentId;
+	public void setAgent(Agent agent) {
+		this.agent = agent;
 	}
-
 	public Passenger getPassenger() {
 		return passenger;
 	}

@@ -1,7 +1,9 @@
 package edu.miu.cs.cs401.project.repository;
 
 import java.util.Collection;
+import java.util.List;
 
+import edu.miu.cs.cs401.project.domain.Agent;
 import edu.miu.cs.cs401.project.domain.Airline;
 import edu.miu.cs.cs401.project.domain.Airport;
 import edu.miu.cs.cs401.project.domain.Flight;
@@ -28,7 +30,11 @@ public interface ReservationSystemRepository {
 	void cancelReservation(String reservationCode);
 	
 	void confirmReservation(String reservationCode);
-
+	
+	Reservation makeReservationByPassenger(Passenger passenger, List<FlightInstance> flightInstances);
+	
+	public Reservation makeReservationByAgent(Agent agent ,Passenger passenger, List<FlightInstance> flightInstances);
+	
 	void addAirport(Airport a);
 
 	void deleteAirport(Airport a);

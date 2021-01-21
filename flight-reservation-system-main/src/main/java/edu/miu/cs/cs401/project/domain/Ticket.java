@@ -15,10 +15,6 @@ public class Ticket {
 		this.number = UUID.randomUUID().toString();
 	}
 
-	public Ticket(Reservation reservation) {
-		this.reservation = reservation;
-		}
-
 	public void setFlight(FlightInstance flight) {
 		this.flightInstance = flight;
 	}
