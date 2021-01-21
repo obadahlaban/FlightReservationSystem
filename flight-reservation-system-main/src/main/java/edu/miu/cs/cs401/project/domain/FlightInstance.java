@@ -23,12 +23,8 @@ public class FlightInstance {
 		crew = new ArrayList<>();
 		flight.addFlightInstance(this);
 	}
-<<<<<<< HEAD
-	public FlightInstance inputFlightInstance(){
-=======
 
-	public FlightInstance inputFlight() {
->>>>>>> b9b3d991aa7c90f522aeb319b76a73614498a352
+	public FlightInstance inputFlightInstance() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("flight=?");
 		Flight f = new Flight();

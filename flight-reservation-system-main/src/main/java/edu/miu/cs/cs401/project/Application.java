@@ -22,7 +22,7 @@ public class Application {
 
 	public static void main(String[] args) {
 
-		ReservationSystemRepository repository=RepositoryFactory.getReservationSystemRepository()
+		ReservationSystemRepository repository=RepositoryFactory.getReservationSystemRepository();
 		System.out.println("Airline Reservation System");
 		System.out.println();
 		System.out.println("Input 1 to log in as administrator");
