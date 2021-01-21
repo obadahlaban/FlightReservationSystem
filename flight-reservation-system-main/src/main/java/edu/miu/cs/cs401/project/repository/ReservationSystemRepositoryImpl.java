@@ -43,11 +43,11 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 		super();
 		
 		setupAirports();
-		
+		setupFlights();
 		setupAirlines();
 		setupCrew();
 		setupPilots();
-		setupFlights();
+		
 		
 		
 		
@@ -87,18 +87,27 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 		Airline airline;
 
 		airline = new Airline("1","AA", "American Airlines", "");
+		airline.addFlight((Flight) flights.values().toArray()[0]);
+		airline.addFlight((Flight) flights.values().toArray()[1]);
 		airlines.put(airline.getID(), airline);
 		
 		airline = new Airline("2","SA","Southwest Airlines", "");
+		airline.addFlight((Flight) flights.values().toArray()[2]);
+		airline.addFlight((Flight) flights.values().toArray()[3]);
 		airlines.put(airline.getID(), airline);
 		
 		airline = new Airline("3","JB", "Jet Blue", "");
+		airline.addFlight((Flight) flights.values().toArray()[1]);
+		airline.addFlight((Flight) flights.values().toArray()[3]);
 		airlines.put(airline.getID(), airline);
 
 		airline = new Airline("4","DA", "Delta Airlines", "");
+		airline.addFlight((Flight) flights.values().toArray()[0]);
+		airline.addFlight((Flight) flights.values().toArray()[3]);
 		airlines.put(airline.getID(), airline);
 
 		airline = new Airline("5","UA", "United Airlines", "");
+		airline.addFlight((Flight) flights.values().toArray()[1]);
 		airlines.put(airline.getID(), airline);
 		
 	}
