@@ -110,6 +110,7 @@ public class Application {
 		if (i==2) {
 		//if passenger
 		boolean back=true;
+		Scanner sc9=new Scanner(System.in);
 		while (back){
 		System.out.println("Input 1 to view list of airports");
 		System.out.println("Input 2 to view airport by code");
@@ -122,9 +123,9 @@ public class Application {
 		System.out.println("Input 9 to cancel a reservation");
 		System.out.println("Input 0 to go back to main menu");
 		System.out.println();
-		Scanner sc9=new Scanner(System.in);
-		j = sc9.nextInt();
-		
+		System.out.println("yoooo11111111111111111");
+		j = sc.nextInt();
+		System.out.println("yoooooooooooo22222222222CIDORD1");
 
 		switch (j){
 			case 1:
