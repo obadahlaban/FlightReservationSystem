@@ -36,7 +36,7 @@ public class Application {
 		System.out.println();
 		Scanner sc = new Scanner(System.in);
 		 int i = sc.nextInt();
-
+		int j;
 		 if (i==1) {		
 		System.out.println("Input 1 to add Airport");
 		System.out.println("Input 2 to add Airline");
@@ -47,7 +47,7 @@ public class Application {
 		System.out.println("Input 7 to delete FlightInstance From Flight");
 		System.out.println("Input 0 to go back to main menu");
 		System.out.println();
-		int	j = sc.nextInt();
+		j = sc.nextInt();
 		switch (j){
 			case 1:
 			Airport a=new Airport();
@@ -109,6 +109,8 @@ public class Application {
 		 
 		if (i==2) {
 		//if passenger
+		boolean back=true;
+		while (back){
 		System.out.println("Input 1 to view list of airports");
 		System.out.println("Input 2 to view airport by code");
 		System.out.println("Input 3 to view list of airports in city");
@@ -120,7 +122,10 @@ public class Application {
 		System.out.println("Input 9 to cancel a reservation");
 		System.out.println("Input 0 to go back to main menu");
 		System.out.println();
-		int j = sc.nextInt();
+		Scanner sc9=new Scanner(System.in);
+		j = sc9.nextInt();
+		
+
 		switch (j){
 			case 1:
 			System.out.println(repository.findAllAirports().toString());
@@ -197,15 +202,20 @@ public class Application {
 			sc7.close();
 			break;
 			case 9:
-			// code block
+			Scanner sc8=new Scanner(System.in);
+			System.out.println("reservationCode? ");
+			String reservationCd=sc8.nextLine();
+			services.cancelReservation(reservationCd);
+			sc8.close();
 			break;
 			case 0:
-			// code block
+			back=true;
 			break;
 		  	default:
-			// code block
+			  back=false;
 		}
 		}
+	}
 		if (i==3) {
 		//if agent
 		System.out.println("Input 1 to view list of airports");
@@ -220,7 +230,7 @@ public class Application {
 		System.out.println("Input 10 to cancel a reservation");
 		System.out.println("Input 0 to go back to main menu");
 		System.out.println();
-		int j = sc.nextInt();
+		j = sc.nextInt();
 		switch (j){
 			case 1:
 			// code block
