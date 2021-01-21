@@ -316,9 +316,10 @@ public class Application {
 				System.out.println("how many flights? ");
 				int number = sc61.nextInt();
 				String code;
+				Scanner sc781= new Scanner(System.in);
 				for (int k = 0; k < number; k++) {
 					System.out.println("Input flight number " + k + " id.");
-					code = sc61.nextLine();
+					code = sc781.nextLine();
 					fls.add(code);
 				}
 				Passenger p = new Passenger();
@@ -343,7 +344,7 @@ public class Application {
 				sc8.close();*/
 				break;
 			case 0:
-				/*back = true;*/
+				back3 = false;
 				break;
 			default:
 				/*back = false;*/
