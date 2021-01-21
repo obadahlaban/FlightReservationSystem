@@ -40,7 +40,7 @@ public class Passenger {
 	public Passenger inputPassenger() {
 		Scanner sc1 = new Scanner(System.in);
 		Scanner sc = new Scanner(System.in);
-		System.out.println("id=?");
+		System.out.println("passenger id=?");
 		String id=sc.nextLine();
 		System.out.println("firstName=?");
 		String firstName=sc.nextLine();

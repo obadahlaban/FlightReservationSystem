@@ -363,14 +363,14 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 		reservation.confirm();
 	}
 	
-	public Reservation makeReservationByPassenger(Passenger passenger, List<String> flightInstancesID) {
+	public Reservation makeReservationByPassenger(Passenger passenger, List<String> flightInstanceIdArray) {
 		Reservation reservation = new Reservation(passenger);
 		List<FlightInstance> flightInstances=new ArrayList<>();
-		for (FlightInstance j: flights.keySet()){
-			for (String k: flightInstancesID){
-				if (j.getId().equalsIgnoreCase(k)) flightInstances.add(j);
-			}
-		}
+		
+		for (FlightInstance flightInstance: flights.keySet())
+			if (flightInstanceIdArray.contains(flightInstance.getId()))
+				flightInstances.add(flightInstance);
+		
 		System.out.println();
 		System.out.println(flightInstances.size());
 		System.out.println();
@@ -388,7 +388,7 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 		List<FlightInstance> flightInstances=new ArrayList<>();
 		for (FlightInstance j:flights.keySet()){
 			for (String k:flightInstancesID){
-				if (j.getId().equalsIgnoreCase(k)) flightInstances.add(j);
+				if (j.getId().equalsIgnoreCase(k))flightInstances.add(j);
 			}
 			
 		}
