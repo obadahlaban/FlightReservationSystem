@@ -344,9 +344,15 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 		reservation.confirm();
 	}
 	
-	public Reservation makeReservationByPassenger(Passenger passenger, Collection<FlightInstance> flightInstances) {
+	public Reservation makeReservationByPassenger(Passenger passenger, List<String> flightInstancesID) {
 		Reservation reservation = new Reservation(passenger);
-		
+		List<FlightInstance> flightInstances=new ArrayList<>();
+		for (FlightInstance j:flights.keySet()){
+			for (String k:flightInstancesID){
+				if (j.getId().equalsIgnoreCase(k)) flightInstances.add(j);
+			}
+			
+		}
 		for(FlightInstance flightInstance: flightInstances) {
 			Ticket ticket = new Ticket(flightInstance, reservation);
 			reservation.addTicket(ticket);

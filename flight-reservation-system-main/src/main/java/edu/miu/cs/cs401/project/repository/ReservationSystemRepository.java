@@ -4,6 +4,8 @@ import java.util.Collection;
 
 import java.time.LocalDate;
 import java.util.Map;
+import java.util.List;
+
 
 import edu.miu.cs.cs401.project.domain.Agent;
 import edu.miu.cs.cs401.project.domain.Airline;
@@ -33,7 +35,7 @@ public interface ReservationSystemRepository {
 
 	void confirmReservation(String reservationCode);
 
-	Reservation makeReservationByPassenger(Passenger passenger, Collection<FlightInstance> flightInstances);
+	Reservation makeReservationByPassenger(Passenger passenger, List<String> flightInstances);
 
 	public Reservation makeReservationByAgent(Agent agent, Passenger passenger,
 			Collection<FlightInstance> flightInstances);

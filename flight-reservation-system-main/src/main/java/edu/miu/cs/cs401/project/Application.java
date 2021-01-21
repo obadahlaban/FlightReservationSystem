@@ -172,15 +172,15 @@ public class Application {
 			sc5.close();
 			break;
 			case 7:
-			List<FlightInstance> fls= new ArrayList<>();
+			List<String> fls= new ArrayList<>();
 			Scanner sc6=new Scanner(System.in);
 			System.out.println("how many flights? ");
 			int number=sc6.nextInt();
-			FlightInstance f=new FlightInstance();
+			String code;
 			for (int k=0;k<number;k++){
-				System.out.println("Input flight number "+k+" data.");
-				f=f.inputFlightInstance();
-				fls.add(f);
+				System.out.println("Input flight number "+k+" id.");
+				code=sc6.nextLine();
+				fls.add(code);
 			}
 			Passenger p=new Passenger();
 			p=p.inputPassenger();
