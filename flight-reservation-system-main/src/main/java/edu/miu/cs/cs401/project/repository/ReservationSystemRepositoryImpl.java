@@ -41,82 +41,155 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 	
 	ReservationSystemRepositoryImpl() {
 		super();
-		setupAirports();
-		setupAirlines();
-		setupFlights();
 		setupCrew();
 		setupPilots();
+		setupFlights();
+		setupAirports();
+		//System.out.println(airports.get("CID"));
+		
+		
+		setupAirlines();
+		//for (Flight fli:flights.values()){
+		//	System.out.println(fli);}
+		addFlightstoairports();
+		
+		
+		
+		
 		
 	}
 	
 	private void setupAirports() {
 		
 		Airport airport;
-		
-		airport = new Airport("CID", "Eastern Iowa Airport", new Address());
-		airports.put(airport.getCode(), airport);
-		
-		airport = new Airport("ORD", "Chicago O'Hare International Airport", new Address());
-		airports.put(airport.getCode(), airport);
-		
-		airport = new Airport("CLT", "Charlotte Douglas International Airport", new Address());
-		airports.put(airport.getCode(), airport);
-		
-		airport = new Airport("LAX", "Los Angeles International Airport", new Address());
-		airports.put(airport.getCode(), airport);
 
-		airport = new Airport("JFK", "John F. Kennedy International Airport", new Address());
+		Address a=new Address("1", "Arthur cullins", "Cedar Rapids", "IA", "52404");
+		airport = new Airport("CID", "Eastern Iowa Airport", a);
 		airports.put(airport.getCode(), airport);
+		a=new Address("2", "OHARE AVE", "Chicago", "IL", "60666");
 
-		airport = new Airport("DFW", "Dallas/Fort Worth International Airport", new Address());
+		airport = new Airport("ORD", "Chicago O'Hare International Airport", a);
 		airports.put(airport.getCode(), airport);
+		a=new Address("3", "Josh Brmgnhm", "Charlotte", "NC", "28208");
+
+		airport = new Airport("CLT", "Charlotte Douglas International Airport", a);
+		airports.put(airport.getCode(), airport);
+		a=new Address("4", "1 Ward way", "los Angeles", "CA", "90045");
+
+		airport = new Airport("LAX", "Los Angeles International Airport", a);
+		airports.put(airport.getCode(), airport);
+		a=new Address("5", "Queens", "Ney York", "NY", "11430");
+
+		airport = new Airport("JFK", "John F. Kennedy International Airport", a);
+		airports.put(airport.getCode(), airport);
+		a=new Address("6", "Aviation Dr", "Dallas", "TX", "75261");
+		airport = new Airport("DFW", "Dallas/Fort Worth International Airport",a);
+		airports.put(airport.getCode(), airport);
+		
 		
 	}
+	private void addFlightstoairports(){
+		for (Airport air:airports.values()){
+		for (Flight fli:flights.values()){
+	
+			if (fli.getDepAirport().getId()==air.getId()) air.addDepartureFlight(fli);
+			if (fli.getArrAirport().getId()==air.getId()) air.addArrivalFlight(fli);
+		}
+	}}
 	private void setupAirlines() {
 		
 		Airline airline;
 
 		airline = new Airline("1","AA", "American Airlines", "");
+		airline.addFlight((Flight) flights.values().toArray()[0]);
+		airline.addFlight((Flight) flights.values().toArray()[1]);
 		airlines.put(airline.getID(), airline);
 		
 		airline = new Airline("2","SA","Southwest Airlines", "");
+		airline.addFlight((Flight) flights.values().toArray()[2]);
+		airline.addFlight((Flight) flights.values().toArray()[3]);
 		airlines.put(airline.getID(), airline);
 		
 		airline = new Airline("3","JB", "Jet Blue", "");
+		airline.addFlight((Flight) flights.values().toArray()[1]);
+		airline.addFlight((Flight) flights.values().toArray()[3]);
 		airlines.put(airline.getID(), airline);
 
 		airline = new Airline("4","DA", "Delta Airlines", "");
+		airline.addFlight((Flight) flights.values().toArray()[0]);
+		airline.addFlight((Flight) flights.values().toArray()[3]);
 		airlines.put(airline.getID(), airline);
 
 		airline = new Airline("5","UA", "United Airlines", "");
+		airline.addFlight((Flight) flights.values().toArray()[1]);
 		airlines.put(airline.getID(), airline);
 		
 	}
 	private void setupFlights() {
+		setupAirports();
 		Flight flight1 = new Flight("flight1", 1, 230,  LocalTime.of(10,45,00),  LocalTime.of(15,45,00),airlines.get("1"), airports.get("CID"), airports.get("ORD"));
-		FlightInstance flightInstance1=new FlightInstance(flight1, "1", LocalDate.of(2020, 1, 13));
+		FlightInstance flightInstance1=new FlightInstance(flight1, "CIDORD1", LocalDate.of(2020, 1, 13));
+		
 		flightInstance1.addCrew(crewMembers.get(0));
 		flightInstance1.addCrew(crewMembers.get(1));
 		flightInstance1.addCrew(crewMembers.get(2));
+		flightInstance1.addPilots(pilots.get(2));
+		flightInstance1.addPilots(pilots.get(1));
 		flight1.addFlightInstance(flightInstance1);
-
-		flightInstance1=new FlightInstance(flight1, "2", LocalDate.of(2020, 1, 23));
+		flights.put(flightInstance1, flight1);
+		
+		flightInstance1=new FlightInstance(flight1, "CIDORD2", LocalDate.of(2021, 12, 23));
 		flightInstance1.addCrew(crewMembers.get(3));
 		flightInstance1.addCrew(crewMembers.get(1));
 		flightInstance1.addCrew(crewMembers.get(4));
+		flightInstance1.addPilots(pilots.get(2));
+		flightInstance1.addPilots(pilots.get(1));
 		flight1.addFlightInstance(flightInstance1);
+		flights.put(flightInstance1, flight1);
 
-		flightInstance1=new FlightInstance(flight1, "3", LocalDate.of(2020, 2, 17));
-		flightInstance1.addCrew(crewMembers.get(2));
-		flightInstance1.addCrew(crewMembers.get(4));
+		flight1 = new Flight("flight2", 2, 120,  LocalTime.of(12,45,00),  LocalTime.of(20,45,00), airlines.get("2"), airports.get("CID"), airports.get("JFK"));
+
+		flightInstance1=new FlightInstance(flight1, "CIDJFK1", LocalDate.of(2021, 12, 23));
+		flightInstance1.addCrew(crewMembers.get(3));
 		flightInstance1.addCrew(crewMembers.get(1));
+		flightInstance1.addCrew(crewMembers.get(4));
+		flightInstance1.addPilots(pilots.get(2));
+		flightInstance1.addPilots(pilots.get(1));
 		flight1.addFlightInstance(flightInstance1);
+		flights.put(flightInstance1, flight1);
 
-		Flight flight2 = new Flight("flight2", 2, 120,  LocalTime.of(12,45,00),  LocalTime.of(20,45,00), airlines.get("2"), airports.get("CID"), airports.get("JFK"));
-		Flight flight3 = new Flight("flight3", 3, 250,  LocalTime.of(19,00,00),  LocalTime.of(22,45,00), airlines.get("3"), airports.get("DFW"), airports.get("LAX"));
-		Flight flight4 = new Flight("flight4", 4, 61,  LocalTime.of(8,05,00),  LocalTime.of(10,45,00), airlines.get("4"), airports.get("DFW"), airports.get("CLT"));
-		Flight flight5 = new Flight("flight5", 5, 97,  LocalTime.of(17,30,00),  LocalTime.of(23,45,00), airlines.get("5"), airports.get("CLT"), airports.get("CID"));
+		flight1 = new Flight("flight3", 3, 250,  LocalTime.of(19,00,00),  LocalTime.of(22,45,00), airlines.get("3"), airports.get("DFW"), airports.get("LAX"));
 
+		flightInstance1=new FlightInstance(flight1, "DFWLAX1", LocalDate.of(2021, 12, 23));
+		flightInstance1.addCrew(crewMembers.get(3));
+		flightInstance1.addCrew(crewMembers.get(1));
+		flightInstance1.addCrew(crewMembers.get(4));
+		flightInstance1.addPilots(pilots.get(2));
+		flightInstance1.addPilots(pilots.get(1));
+		flight1.addFlightInstance(flightInstance1);
+		flights.put(flightInstance1, flight1);
+
+		flight1 = new Flight("flight4", 4, 61,  LocalTime.of(8,05,00),  LocalTime.of(10,45,00), airlines.get("4"), airports.get("DFW"), airports.get("CLT"));
+
+		flightInstance1=new FlightInstance(flight1, "DFWCLT1", LocalDate.of(2021, 12, 23));
+		flightInstance1.addCrew(crewMembers.get(3));
+		flightInstance1.addCrew(crewMembers.get(1));
+		flightInstance1.addCrew(crewMembers.get(4));
+		flightInstance1.addPilots(pilots.get(2));
+		flightInstance1.addPilots(pilots.get(1));
+		flight1.addFlightInstance(flightInstance1);
+		flights.put(flightInstance1, flight1);
+
+		flight1 = new Flight("flight5", 5, 97,  LocalTime.of(17,30,00),  LocalTime.of(23,45,00), airlines.get("5"), airports.get("CLT"), airports.get("CID"));
+
+		flightInstance1=new FlightInstance(flight1, "CLTCID2", LocalDate.of(2021, 12, 23));
+		flightInstance1.addCrew(crewMembers.get(3));
+		flightInstance1.addCrew(crewMembers.get(1));
+		flightInstance1.addCrew(crewMembers.get(4));
+		flightInstance1.addPilots(pilots.get(2));
+		flightInstance1.addPilots(pilots.get(1));
+		flight1.addFlightInstance(flightInstance1);
+		flights.put(flightInstance1, flight1);
 	}
 	private void setupCrew() {
 		Crew crew;
@@ -177,22 +250,25 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 	@Override
 	public Collection<Airline> findAirlinesByAirportCode(String airportCode) {
 		Airport airport= findAirportByAirportCode(airportCode);
-		if(airport == null)
-			return new ArrayList<>();
-		Map<String, Airline> airlines = new HashMap<>();
+		if(airport == null){
+			return new ArrayList<>();}
+		List<Airline>airlines = new ArrayList<>();
 		List<Flight> flights = airport.getDepartureFlights();		
 		for (Flight flight: flights) {
+			System.out.println(flight.toString());
 			Airline airline=flight.getAirline();			
-			airlines.put(airline.getAirlineCode(), airline);
+			airlines.add(airline);
 		}
-		return airlines.values();
+		System.out.println("airport is null");
+		return airlines;
 	}
 
 	@Override
-	public Collection<Flight> findFlightsFromTo (String departureID, String arrivalID,LocalDate flightDate) {
-		List<Flight> result = new ArrayList<>();
-		for (FlightInstance f:flights.values()){
-			if ((f.getFlight().getDepAirport().getId()==departureID)&&(f.getFlight().getArrAirport().getId()==arrivalID)&&(f.getDate()==flightDate)) result.add(f.getFlight());
+	public Collection<FlightInstance> findFlightsFromTo (String departureID, String arrivalID,LocalDate flightDate) {
+		List<FlightInstance> result = new ArrayList<>();
+		for (FlightInstance f:flights.keySet()){
+			System.out.println(f.getFlight().getDepAirport().getId());
+			if ((f.getFlight().getDepAirport().getCode().equalsIgnoreCase(departureID))&&(f.getFlight().getArrAirport().getCode().equalsIgnoreCase(arrivalID))&&(f.getDate().equals(flightDate))) result.add(f);
 		}
 		return result;
 	}
@@ -241,26 +317,16 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 	}
 
 	public void addFlightInstanceToFlight(Flight flight,FlightInstance flightInstance){
-		Flight old=flight;
 		flight.addFlightInstance(flightInstance);
-
-		while (flights.remove(old)!=null){
-			flights.remove(old);
-		}
 		for(FlightInstance inst:flight.getFlightInstances()){
-		this.flights.put(flight,inst);
+		this.flights.put(inst,flight);
 		}
 	}
 
 	public void deleteFlightInstanceFromFlight(Flight flight,FlightInstance flightInstance){
-		Flight old=flight;
 		flight.deleteFlightInstance(flightInstance);
-
-		while (flights.remove(old)!=null){
-			flights.remove(old);
-		}
 		for(FlightInstance inst:flight.getFlightInstances()){
-		this.flights.put(flight,inst);
+		this.flights.put(inst,flight);
 		}
 		
 	}
@@ -278,7 +344,7 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 		reservation.confirm();
 	}
 	
-	public Reservation makeReservationByPassenger(Passenger passenger, List<FlightInstance> flightInstances) {
+	public Reservation makeReservationByPassenger(Passenger passenger, Collection<FlightInstance> flightInstances) {
 		Reservation reservation = new Reservation(passenger);
 		
 		for(FlightInstance flightInstance: flightInstances) {
@@ -290,7 +356,7 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 		return reservation;
 	}
 	
-	public Reservation makeReservationByAgent(Agent agent ,Passenger passenger, List<FlightInstance> flightInstances) {
+	public Reservation makeReservationByAgent(Agent agent ,Passenger passenger, Collection<FlightInstance> flightInstances) {
 		Reservation reservation =new Reservation(passenger,agent);
 		for(FlightInstance flightInstance: flightInstances) {
 			Ticket ticket = new Ticket(flightInstance, reservation);
@@ -305,7 +371,9 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 		return this.reservations;
 	}
 	
-
+	public Map<String, Agent> getAgents(){
+		return this.agents;
+	}
 	
 
 }

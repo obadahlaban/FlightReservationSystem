@@ -1,10 +1,6 @@
 package edu.miu.cs.cs401.project.domain;
 
-import java.util.Locale;
 import java.util.Scanner;
-import java.util.UUID;
-
-import com.github.javafaker.Faker;
 
 public class Address {
 	
@@ -25,6 +21,9 @@ public class Address {
 		this.zip = zip;
 		this.id = id;
 	}
+	public Address(){
+
+	}
 	public Address inputAddress(){
 		Scanner sc = new Scanner(System.in);
 		System.out.println("id=?");
@@ -37,6 +36,7 @@ public class Address {
 		String statei=sc.nextLine();
 		System.out.println("zip=?");
 		String zipi=sc.nextLine();
+		sc.close();
 		return new Address( idi, streeti, cityi, statei, zipi);
 
 	}
