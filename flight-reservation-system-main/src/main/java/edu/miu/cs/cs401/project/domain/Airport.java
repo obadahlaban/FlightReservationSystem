@@ -33,11 +33,12 @@ public class Airport {
 		System.out.println("Enter name");
 		String name=sc.nextLine().trim();
 		System.out.println("Enter address");
-		Address a=a.inputAddress();
+		Address a= new Address();
+		a.inputAddress();
+		sc.close();
 		return new Airport( code,  name,  a);
 
 
-    String userName = myObj.nextLine()
 	}
 
 	public String getId() {
