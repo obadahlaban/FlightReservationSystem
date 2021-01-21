@@ -1,5 +1,7 @@
 package edu.miu.cs.cs401.project;
 
+import java.util.Scanner;
+
 import edu.miu.cs.cs401.project.service.ReservationSystemService;
 import edu.miu.cs.cs401.project.service.ServiceFactory;
 
@@ -57,7 +59,8 @@ public class Application {
 			// code block
 		}
 		 }
-		 if (i==2) {
+		 
+		if (i==2) {
 		//if passenger
 		System.out.println("Input 1 to view list of airports");
 		System.out.println("Input 2 to view airport by code");
