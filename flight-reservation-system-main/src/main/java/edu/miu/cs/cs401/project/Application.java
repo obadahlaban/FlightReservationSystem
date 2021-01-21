@@ -1,5 +1,6 @@
 package edu.miu.cs.cs401.project;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 import edu.miu.cs.cs401.project.service.ReservationSystemService;
@@ -137,10 +138,24 @@ public class Application {
 			Scanner sc3=new Scanner(System.in);
 			System.out.println("input airport code ");
 			String apc=sc3.nextLine().trim();
-			services.findAirlinesByAirportCode(apc);
+			System.out.println(services.findAirlinesByAirportCode(apc));
 			break;
 			case 5:
-			// code block
+			Scanner sc4=new Scanner(System.in);
+			System.out.println("input dep airport code ");
+			String dep=sc4.nextLine().trim();
+			System.out.println("input arr airport code ");
+			String arr=sc4.nextLine().trim();
+			System.out.println("date?");
+			System.out.println("day?");
+			int day=sc4.nextInt();
+			System.out.println("month?");
+			int month=sc4.nextInt();
+			System.out.println("year?");
+			int year=sc4.nextInt();
+			LocalDate date=LocalDate.of(year, month, day);
+			System.out.println(services.findFlightsFromTo(dep, arr, date));
+
 			break;
 			case 6:
 			// code block

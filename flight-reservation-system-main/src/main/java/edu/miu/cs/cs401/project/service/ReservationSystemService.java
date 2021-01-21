@@ -21,7 +21,7 @@ public interface ReservationSystemService {
 	
 	Collection<Airline> findAirlinesByAirportCode(String airportCode);
 	
-	Collection<Flight> findFlightsFromTo(String departure, String arrival, LocalDate flightDate);
+	Collection<FlightInstance> findFlightsFromTo(String departure, String arrival, LocalDate flightDate);
 	
 	Collection<Reservation> findReservationsByPassengerId(String passengerId);
 	

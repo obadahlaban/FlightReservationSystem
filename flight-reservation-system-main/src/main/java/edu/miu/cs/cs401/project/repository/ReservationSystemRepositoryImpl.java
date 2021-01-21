@@ -41,12 +41,17 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 	
 	ReservationSystemRepositoryImpl() {
 		super();
-		
-		setupAirports();
-		setupFlights();
-		setupAirlines();
 		setupCrew();
 		setupPilots();
+		setupFlights();
+		setupAirports();
+		//System.out.println(airports.get("CID"));
+		
+		
+		setupAirlines();
+		//for (Flight fli:flights.values()){
+		//	System.out.println(fli);}
+		addFlightstoairports();
 		
 		
 		
@@ -81,7 +86,16 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 		airport = new Airport("DFW", "Dallas/Fort Worth International Airport",a);
 		airports.put(airport.getCode(), airport);
 		
+		
 	}
+	private void addFlightstoairports(){
+		for (Airport air:airports.values()){
+		for (Flight fli:flights.values()){
+	
+			if (fli.getDepAirport().getId()==air.getId()) air.addDepartureFlight(fli);
+			if (fli.getArrAirport().getId()==air.getId()) air.addArrivalFlight(fli);
+		}
+	}}
 	private void setupAirlines() {
 		
 		Airline airline;
@@ -112,6 +126,7 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 		
 	}
 	private void setupFlights() {
+		setupAirports();
 		Flight flight1 = new Flight("flight1", 1, 230,  LocalTime.of(10,45,00),  LocalTime.of(15,45,00),airlines.get("1"), airports.get("CID"), airports.get("ORD"));
 		FlightInstance flightInstance1=new FlightInstance(flight1, "1", LocalDate.of(2020, 1, 13));
 		
@@ -235,22 +250,24 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 	@Override
 	public Collection<Airline> findAirlinesByAirportCode(String airportCode) {
 		Airport airport= findAirportByAirportCode(airportCode);
-		if(airport == null)
-			return new ArrayList<>();
-		Map<String, Airline> airlines = new HashMap<>();
+		if(airport == null){
+			return new ArrayList<>();}
+		List<Airline>airlines = new ArrayList<>();
 		List<Flight> flights = airport.getDepartureFlights();		
 		for (Flight flight: flights) {
+			System.out.println(flight.toString());
 			Airline airline=flight.getAirline();			
-			airlines.put(airline.getAirlineCode(), airline);
+			airlines.add(airline);
 		}
-		return airlines.values();
+		System.out.println("airport is null");
+		return airlines;
 	}
 
 	@Override
-	public Collection<Flight> findFlightsFromTo (String departureID, String arrivalID,LocalDate flightDate) {
-		List<Flight> result = new ArrayList<>();
+	public Collection<FlightInstance> findFlightsFromTo (String departureID, String arrivalID,LocalDate flightDate) {
+		List<FlightInstance> result = new ArrayList<>();
 		for (FlightInstance f:flights.keySet()){
-			if ((f.getFlight().getDepAirport().getId()==departureID)&&(f.getFlight().getArrAirport().getId()==arrivalID)&&(f.getDate()==flightDate)) result.add(f.getFlight());
+			if ((f.getFlight().getDepAirport().getId().equalsIgnoreCase(departureID))&&(f.getFlight().getArrAirport().getId().equalsIgnoreCase(arrivalID))&&(f.getDate().equals(flightDate))) result.add(f);
 		}
 		return result;
 	}

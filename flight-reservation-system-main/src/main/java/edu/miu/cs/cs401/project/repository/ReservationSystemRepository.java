@@ -23,7 +23,7 @@ public interface ReservationSystemRepository {
 
 	Collection<Airline> findAirlinesByAirportCode(String airportCode);
 
-	Collection<Flight> findFlightsFromTo(String departureID, String arrivalID, LocalDate flightDate);
+	Collection<FlightInstance> findFlightsFromTo(String departureID, String arrivalID, LocalDate flightDate);
 
 	Collection<Reservation> findReservationsByPassengerId(String passengerId);
 

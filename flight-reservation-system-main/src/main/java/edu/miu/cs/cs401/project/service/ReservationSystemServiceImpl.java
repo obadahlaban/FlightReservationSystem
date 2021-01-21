@@ -73,7 +73,7 @@ public class ReservationSystemServiceImpl implements ReservationSystemService {
 	}
 
 	@Override
-	public Collection<Flight> findFlightsFromTo(String departure, String arrival, LocalDate flightDate) {
+	public Collection<FlightInstance> findFlightsFromTo(String departure, String arrival, LocalDate flightDate) {
 		return repository.findFlightsFromTo(departure, arrival,flightDate);
 	}
 
