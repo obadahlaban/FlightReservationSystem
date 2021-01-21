@@ -30,7 +30,7 @@ public interface ReservationSystemService {
 	
 	Reservation createReservation(Passenger passenger, List<String> flights); // Passenger reserves
 	
-	Reservation createReservation(Agent agent, Passenger passenger, Collection<FlightInstance> flights); // Agent reserves
+	Reservation createReservation(Agent agent, Passenger passenger, List<String> flights); // Agent reserves
 	
 	void confirmReservation(String reservationCode);
 	

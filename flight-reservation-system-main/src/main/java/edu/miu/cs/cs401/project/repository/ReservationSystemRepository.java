@@ -38,7 +38,7 @@ public interface ReservationSystemRepository {
 	Reservation makeReservationByPassenger(Passenger passenger, List<String> flightInstances);
 
 	public Reservation makeReservationByAgent(Agent agent, Passenger passenger,
-			Collection<FlightInstance> flightInstances);
+	List<String> flightInstances);
 
 	void addAirport(Airport a);
 

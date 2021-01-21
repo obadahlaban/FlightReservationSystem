@@ -41,6 +41,7 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 	
 	ReservationSystemRepositoryImpl() {
 		super();
+		setupAgents();
 		setupCrew();
 		setupPilots();
 		setupFlights();
@@ -58,7 +59,22 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 		
 		
 	}
-	
+	private void setupAgents(){
+		Agent A=new Agent ("agent1","Michael");
+		agents.put("agent1", A);
+		A=new Agent ("agent2","Britney");
+		agents.put("agent2", A);
+		 A=new Agent ("agent3","YOLO");
+		 agents.put("agent3", A);
+		 A=new Agent ("agent4","Elvis");
+		 agents.put("agent4", A);
+		 A=new Agent ("agent5","Jesse");
+		 agents.put("agent5", A);
+		 A=new Agent ("agent6","Jack");
+		 agents.put("agent6", A);
+	}
+
+
 	private void setupAirports() {
 		
 		Airport airport;
@@ -355,6 +371,9 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 				if (j.getId().equalsIgnoreCase(k)) flightInstances.add(j);
 			}
 		}
+		System.out.println();
+		System.out.println(flightInstances.size());
+		System.out.println();
 		for(FlightInstance flightInstance: flightInstances) {
 			Ticket ticket = new Ticket(flightInstance, reservation);
 			reservation.addTicket(ticket);
@@ -364,8 +383,18 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 		return reservation;
 	}
 	
-	public Reservation makeReservationByAgent(Agent agent ,Passenger passenger, Collection<FlightInstance> flightInstances) {
+	public Reservation makeReservationByAgent(Agent agent ,Passenger passenger, List<String> flightInstancesID) {
 		Reservation reservation =new Reservation(passenger,agent);
+		List<FlightInstance> flightInstances=new ArrayList<>();
+		for (FlightInstance j:flights.keySet()){
+			for (String k:flightInstancesID){
+				if (j.getId().equalsIgnoreCase(k)) flightInstances.add(j);
+			}
+			
+		}
+		System.out.println();
+		System.out.println(flightInstances.size());
+		System.out.println();
 		for(FlightInstance flightInstance: flightInstances) {
 			Ticket ticket = new Ticket(flightInstance, reservation);
 			reservation.addTicket(ticket);
