@@ -2,11 +2,14 @@ package edu.miu.cs.cs401.project.domain;
 
 import java.util.List;
 
+import edu.miu.cs.cs401.project.costant.Status;
+
 public class Reservation {
 	List<Ticket> tickets;
 	String reservationId;
 	String agentId=null;
 	Passenger passenger;
+	private Status status=Status.NONE;
 
 	public Reservation(List<Ticket> tickets, String reservationId, String agentId, Passenger passenger) {
 		super();
@@ -23,6 +26,9 @@ public class Reservation {
 	}
 	
 
+	public Status getStatus() {
+		return status;
+	}
 	public List<Ticket> getTickets() {
 		return tickets;
 	}
@@ -57,6 +63,9 @@ public class Reservation {
 	public void setPassenger(Passenger passenger) {
 		this.passenger = passenger;
 	}
+	public void confirm() {
+		this.status=Status.CONFIRM_PURCHASE;
+	}
 
 	@Override
 	public String toString() {
@@ -64,5 +73,5 @@ public class Reservation {
 		if (agentId==null) return s;
 		return "Agent Id = "+this.agentId+ "\n"+s;//why we have this
 	}
-
+	
 }

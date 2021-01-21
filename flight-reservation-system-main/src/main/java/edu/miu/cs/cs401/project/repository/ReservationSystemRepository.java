@@ -24,6 +24,8 @@ public interface ReservationSystemRepository {
 	Collection<Reservation> findReservationsByPassengerId(String passengerId);
 	
 	Collection<Passenger> findPassengersByAgentCode(String agentCode);
+	
+	void cancelReservation(String reservationCode);
 
 	void addAirport(Airport a);
 
@@ -33,9 +35,9 @@ public interface ReservationSystemRepository {
 
 	void deleteAirline(Airline a);
 
-	void addFlightToAirline(Flight f);
+	void addFlightToAirline(String airlineID,Flight f);
 
-	void deleteFlightFromAirline(Flight f);
+	void deleteFlightFromAirline(String airlineID, Flight f);
 
 	void addFlightInstanceToFlight(Flight flight,FlightInstance flightInstance);
 

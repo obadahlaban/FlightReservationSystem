@@ -7,6 +7,7 @@ import com.github.javafaker.Faker;
 
 public class Address {
 	
+	private String id;
 	private String street;
 	
 	private String city;

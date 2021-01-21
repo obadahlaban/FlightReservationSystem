@@ -230,11 +230,11 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 	public void deleteAirline(Airline a){
 		this.airlines.remove(a.getID(), a);
 	}
-
+	@Override
 	public void addFlightToAirline(String airlineID,Flight f){
 		this.airlines.get(airlineID).addFlight(f);
 	}
-
+	@Override
 	public void deleteFlightFromAirline(String airlineID,Flight f){
 		this.airlines.get(airlineID).delFlight(f);
 	}
@@ -272,6 +272,10 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 		
 		reservations.remove(reservationCode);
 	}
+	public void confirmReservation(String reservationCode) {
+		Reservation reservation =reservations.get(reservationCode);
+		reservation.confirm();
+	}
 
 	public static void main (String[] args){
 		ReservationSystemRepositoryImpl c= new ReservationSystemRepositoryImpl();
@@ -279,16 +283,6 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 		System.out.println(c.findAirportsByCity("CID"));
 	}
 
-	@Override
-	public void addFlightToAirline(Flight f) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void deleteFlightFromAirline(Flight f) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 }
