@@ -19,11 +19,9 @@ public class Application {
 		System.out.println("Input 2 to add Airline");
 		System.out.println("Input 3 to delete Airline");
 		System.out.println("Input 4 to add flight to airline");
-<<<<<<< HEAD
 		System.out.println("Input");
 		System.out.println("Input");
 		System.out.println("Input");
-=======
 		System.out.println("Input 5 to delete Flight From Airline");
 		System.out.println("Input 6 to add flightInstance To flight");
 		System.out.println("Input 7 to delete FlightInstance From Flight");
@@ -72,7 +70,7 @@ public class Application {
 		System.out.println("Input 9 to cancel a reservation");
 		System.out.println("Input 0 to go back to main menu");
 		System.out.println();
-		j = sc.nextInt();
+		int j = sc.nextInt();
 		switch (j){
 			case 1:
 			// code block
@@ -122,7 +120,7 @@ public class Application {
 		System.out.println("Input 10 to cancel a reservation");
 		System.out.println("Input 0 to go back to main menu");
 		System.out.println();
-		j = sc.nextInt();
+		int j = sc.nextInt();
 		switch (j){
 			case 1:
 			// code block
@@ -165,7 +163,6 @@ public class Application {
 
 
 
->>>>>>> branch 'main' of https://github.com/obadahlaban/FlightReservationSystem.git
 		
 		/*
 		 * ReservationSystemService service =

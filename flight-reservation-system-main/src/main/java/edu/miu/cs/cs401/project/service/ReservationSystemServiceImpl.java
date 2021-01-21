@@ -32,45 +32,38 @@ public class ReservationSystemServiceImpl implements ReservationSystemService {
 
 	@Override
 	public Collection<Airport> findAirportsByCity(String city) {
-		// TODO Auto-generated method stub
-		return null;
+		return repository.findAirportsByCity(city);
 	}
 
 	@Override
 	public Collection<Airline> findAirlinesByAirportCode(String airportCode) {
-		// TODO Auto-generated method stub
-		return null;
+		return repository.findAirlinesByAirportCode(airportCode);
 	}
 
 
 	@Override
-	public Collection<Reservation> findReservationsByPassengerId(Integer passengerId) {
-		// TODO Auto-generated method stub
-		return null;
+	public Collection<Reservation> findReservationsByPassengerId(String passengerId) {
+		return repository.findReservationsByPassengerId(passengerId);
 	}
 
 	@Override
 	public Collection<Passenger> findPassengersByAgentCode(String agentCode) {
-		// TODO Auto-generated method stub
-		return null;
+		return repository.findPassengersByAgentCode(agentCode);
 	}
 
 	@Override
 	public Reservation createReservation(Passenger passenger, Collection<Flight> flights) {
-		// TODO Auto-generated method stub
-		return null;
+		return repository.crea;//todo
 	}
 
 	@Override
 	public Reservation createReservation(Agent agent, Passenger passenger, Collection<Flight> flights) {
-		// TODO Auto-generated method stub
-		return null;
+		return repository.crea;//todo
 	}
 
 	@Override
 	public void confirmReservation(String reservationCode) {
-		// TODO Auto-generated method stub
-		
+		repository.
 	}
 
 	@Override
