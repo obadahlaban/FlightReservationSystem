@@ -146,7 +146,6 @@ public class Application {
 				System.out.println();
 				Scanner sc9 = new Scanner(System.in);
 				j = sc9.nextInt();
-				sc9.close();
 				switch (j) {
 				case 1:
 					System.out.println(repository.findAllAirports().toString());

@@ -250,8 +250,8 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 	@Override
 	public Collection<Airline> findAirlinesByAirportCode(String airportCode) {
 		Airport airport= findAirportByAirportCode(airportCode);
-		if(airport == null){
-			return new ArrayList<>();}
+		if(airport == null)
+			return new ArrayList<>();
 		List<Airline>airlines = new ArrayList<>();
 		List<Flight> flights = airport.getDepartureFlights();		
 		for (Flight flight: flights) {
@@ -259,7 +259,6 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 			Airline airline=flight.getAirline();			
 			airlines.add(airline);
 		}
-		System.out.println("airport is null");
 		return airlines;
 	}
 
@@ -333,6 +332,10 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 		
 	public void cancelReservation(String reservationCode) {
 		Reservation reservation =reservations.get(reservationCode);
+		if (reservation == null) {
+			System.out.println("wrong reservation code");
+			return;
+		}
 		reservation.setTickets(null);
 		Passenger passenger= reservation.getPassenger();
 		passenger.removeReservation(reservation);
@@ -347,11 +350,10 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 	public Reservation makeReservationByPassenger(Passenger passenger, List<String> flightInstancesID) {
 		Reservation reservation = new Reservation(passenger);
 		List<FlightInstance> flightInstances=new ArrayList<>();
-		for (FlightInstance j:flights.keySet()){
-			for (String k:flightInstancesID){
+		for (FlightInstance j: flights.keySet()){
+			for (String k: flightInstancesID){
 				if (j.getId().equalsIgnoreCase(k)) flightInstances.add(j);
 			}
-			
 		}
 		for(FlightInstance flightInstance: flightInstances) {
 			Ticket ticket = new Ticket(flightInstance, reservation);
