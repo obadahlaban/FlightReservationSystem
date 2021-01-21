@@ -118,7 +118,7 @@ public class Application {
 		int j = sc.nextInt();
 		switch (j){
 			case 1:
-			// code block
+			System.out.println(repository.findAllAirports().toString());
 			break;
 		  	case 2:
 			// code block

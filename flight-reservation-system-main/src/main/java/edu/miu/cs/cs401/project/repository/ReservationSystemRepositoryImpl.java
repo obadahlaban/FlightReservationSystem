@@ -41,11 +41,16 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 	
 	ReservationSystemRepositoryImpl() {
 		super();
+		
 		setupAirports();
+		
 		setupAirlines();
-		setupFlights();
 		setupCrew();
 		setupPilots();
+		setupFlights();
+		
+		
+		
 		
 	}
 	
@@ -100,6 +105,7 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 	private void setupFlights() {
 		Flight flight1 = new Flight("flight1", 1, 230,  LocalTime.of(10,45,00),  LocalTime.of(15,45,00),airlines.get("1"), airports.get("CID"), airports.get("ORD"));
 		FlightInstance flightInstance1=new FlightInstance(flight1, "1", LocalDate.of(2020, 1, 13));
+		
 		flightInstance1.addCrew(crewMembers.get(0));
 		flightInstance1.addCrew(crewMembers.get(1));
 		flightInstance1.addCrew(crewMembers.get(2));
@@ -107,7 +113,7 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 		flightInstance1.addPilots(pilots.get(1));
 		flight1.addFlightInstance(flightInstance1);
 		flights.put(flightInstance1, flight1);
-
+		
 		flightInstance1=new FlightInstance(flight1, "2", LocalDate.of(2021, 12, 23));
 		flightInstance1.addCrew(crewMembers.get(3));
 		flightInstance1.addCrew(crewMembers.get(1));
