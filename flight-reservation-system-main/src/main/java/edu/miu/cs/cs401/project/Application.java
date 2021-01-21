@@ -23,6 +23,7 @@ public class Application {
 	public static void main(String[] args) {
 
 		ReservationSystemRepository repository=RepositoryFactory.getReservationSystemRepository();
+		ReservationSystemService services=ServiceFactory.getReservationSystemService();
 		System.out.println("Airline Reservation System");
 		System.out.println();
 		System.out.println("Input 1 to log in as administrator");
@@ -133,7 +134,10 @@ public class Application {
 			System.out.println(repository.findAirportsByCity(city));
 			break;
 			case 4:
-			// code block
+			Scanner sc3=new Scanner(System.in);
+			System.out.println("input airport code ");
+			String apc=sc3.nextLine().trim();
+			services.findAirlinesByAirportCode(apc);
 			break;
 			case 5:
 			// code block
