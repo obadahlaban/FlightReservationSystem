@@ -32,7 +32,7 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 	
 	private Map<String, Agent> agents = new HashMap<>();
 	
-	private Map<Integer,Reservation> reservations = new HashMap<>();
+	private Map<String,Reservation> reservations = new HashMap<>();
 	
 	private List<Crew> crewMembers= new ArrayList<>();
 	
@@ -191,7 +191,7 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 	public Collection<Flight> findFlightsFromTo (Airport departure, Airport arrival) {
 		List<Flight> result = new ArrayList<>();
 		for (FlightInstance f:flights.values()){
-			if ((f.getFl().getDepAirport()==departure)&&(f.getFl().getArrAirport()==arrival)) result.add(f.getFl());
+			if ((f.getFlight().getDepAirport()==departure)&&(f.getFlight().getArrAirport()==arrival)) result.add(f.getFlight());
 		}
 		return result;
 	}
@@ -261,12 +261,34 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 		for(FlightInstance inst:flight.getFlightInstances()){
 		this.flights.put(flight,inst);
 		}
+		
+	}
+		
+	public void cancelReservation(String reservationCode) {
+		Reservation reservation =reservations.get(reservationCode);
+		reservation.setTickets(null);
+		Passenger passenger= reservation.getPassenger();
+		passenger.removeReservation(reservation);
+		
+		reservations.remove(reservationCode);
 	}
 
 	public static void main (String[] args){
 		ReservationSystemRepositoryImpl c= new ReservationSystemRepositoryImpl();
 		System.out.println(c.findAirportByAirportCode("CID"));
 		System.out.println(c.findAirportsByCity("CID"));
+	}
+
+	@Override
+	public void addFlightToAirline(Flight f) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteFlightFromAirline(Flight f) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
