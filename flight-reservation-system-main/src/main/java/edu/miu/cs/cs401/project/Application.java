@@ -120,11 +120,17 @@ public class Application {
 			case 1:
 			System.out.println(repository.findAllAirports().toString());
 			break;
-		  	case 2:
-			// code block
+			  case 2:
+			  Scanner scv=new Scanner(System.in);
+			  System.out.println("input airport code");
+			  String airportCode=scv.nextLine().trim();
+			  System.out.println(repository.findAirportByAirportCode(airportCode));
 			break;
 			case 3:
-			// code block
+			Scanner sc2=new Scanner(System.in);
+			System.out.println("input city ");
+			String city=sc2.nextLine().trim();
+			System.out.println(repository.findAirportsByCity(city));
 			break;
 			case 4:
 			// code block
