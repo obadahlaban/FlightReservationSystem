@@ -1,6 +1,8 @@
 package edu.miu.cs.cs401.project.domain;
 
 import java.util.List;
+
+import java.util.ArrayList;
 import java.util.UUID;
 
 import edu.miu.cs.cs401.project.costant.Status;
@@ -16,6 +18,7 @@ public class Reservation {
 		this.reservationId = UUID.randomUUID().toString();
 		this.passenger=passenger;
 		this.agent=new Agent("na","na");
+		tickets=new ArrayList<>();
 	}
 	public Reservation(Passenger passenger,Agent agent) {
 		this.reservationId = UUID.randomUUID().toString();

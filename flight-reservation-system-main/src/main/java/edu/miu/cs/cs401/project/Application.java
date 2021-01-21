@@ -131,8 +131,8 @@ public class Application {
 
 		if (i == 2) {
 			// if passenger
-			boolean back = true;
-			while (back) {
+			//boolean back = true;
+			//while (back) {
 				System.out.println("Input 1 to view list of airports");
 				System.out.println("Input 2 to view airport by code");
 				System.out.println("Input 3 to view list of airports in city");
@@ -144,9 +144,9 @@ public class Application {
 				System.out.println("Input 9 to cancel a reservation");
 				System.out.println("Input 0 to go back to main menu");
 				System.out.println();
-				Scanner sc9 = new Scanner(System.in);
-				j = sc9.nextInt();
-				sc9.close();
+				//Scanner sc9 = new Scanner(System.in);
+				j = sc.nextInt();
+				
 				switch (j) {
 				case 1:
 					System.out.println(repository.findAllAirports().toString());
@@ -156,21 +156,21 @@ public class Application {
 					System.out.println("input airport code");
 					String airportCode = scv.nextLine().trim();
 					System.out.println(repository.findAirportByAirportCode(airportCode));
-					scv.close();
+					//scv.close();
 					break;
 				case 3:
 					Scanner sc2 = new Scanner(System.in);
 					System.out.println("input city ");
 					String city = sc2.nextLine().trim();
 					System.out.println(repository.findAirportsByCity(city));
-					sc2.close();
+					//sc2.close();
 					break;
 				case 4:
 					Scanner sc3 = new Scanner(System.in);
 					System.out.println("input airport code ");
 					String apc = sc3.nextLine().trim();
 					System.out.println(services.findAirlinesByAirportCode(apc));
-					sc3.close();
+					//sc3.close();
 					break;
 				case 5:
 					Scanner sc4 = new Scanner(System.in);
@@ -187,7 +187,7 @@ public class Application {
 					int year = sc4.nextInt();
 					LocalDate date = LocalDate.of(year, month, day);
 					System.out.println(services.findFlightsFromTo(dep, arr, date));
-					sc4.close();
+					//sc4.close();
 
 					break;
 				case 6:
@@ -195,7 +195,7 @@ public class Application {
 					System.out.println("input passenger id ");
 					String id = sc5.nextLine().trim();
 					services.findReservationsByPassengerId(id);
-					sc5.close();
+					//sc5.close();
 					break;
 				case 7:
 					List<String> fls = new ArrayList<>();
@@ -203,15 +203,16 @@ public class Application {
 					System.out.println("how many flights? ");
 					int number = sc6.nextInt();
 					String code;
+					Scanner sc10 = new Scanner(System.in);
 					for (int k = 0; k < number; k++) {
 						System.out.println("Input flight number " + k + " id.");
-						code = sc6.nextLine();
+						code = sc10.nextLine();
 						fls.add(code);
 					}
 					Passenger p = new Passenger();
 					p = p.inputPassenger();
 					System.out.println(services.createReservation(p, fls));
-					sc6.close();
+					//sc6.close();
 
 					break;
 				case 8:
@@ -220,22 +221,22 @@ public class Application {
 					String reservationCode = sc7.nextLine();
 					services.confirmReservation(reservationCode);
 					System.out.println("reservation confirmed! ");
-					sc7.close();
+					//sc7.close();
 					break;
 				case 9:
 					Scanner sc8 = new Scanner(System.in);
 					System.out.println("reservationCode? ");
 					String reservationCd = sc8.nextLine();
 					services.cancelReservation(reservationCd);
-					sc8.close();
+					//sc8.close();
 					break;
 				case 0:
-					back = true;
+					//back = true;
 					break;
 				default:
-					back = false;
+					//back = false;
 				}
-			}
+			//}
 		}
 		if (i == 3) {
 			// if agent
@@ -256,69 +257,74 @@ public class Application {
 			j = sc.nextInt();
 			switch (j) {
 			case 1:
-				
+				System.out.println(repository.findAllAirports().toString());
 				break;
 			case 2:
-			
+				Scanner scv1 = new Scanner(System.in);
+				System.out.println("input airport code");
+				String airportCode = scv1.nextLine().trim();
+				System.out.println(repository.findAirportByAirportCode(airportCode));
 				break;
 			case 3:
-				/*Scanner sc2 = new Scanner(System.in);
+				Scanner sc21 = new Scanner(System.in);
 				System.out.println("input city ");
-				String city = sc2.nextLine().trim();
+				String city = sc21.nextLine().trim();
 				System.out.println(repository.findAirportsByCity(city));
-				sc2.close();*/
 				break;
 			case 4:
-				/*Scanner sc3 = new Scanner(System.in);
+				Scanner sc31 = new Scanner(System.in);
 				System.out.println("input airport code ");
-				String apc = sc3.nextLine().trim();
+				String apc = sc31.nextLine().trim();
 				System.out.println(services.findAirlinesByAirportCode(apc));
-				sc3.close();*/
 				break;
 			case 5:
-				/*Scanner sc4 = new Scanner(System.in);
-				System.out.println("input dep airport code ");
-				String dep = sc4.nextLine().trim();
-				System.out.println("input arr airport code ");
-				String arr = sc4.nextLine().trim();
-				System.out.println("date?");
-				System.out.println("day?");
-				int day = sc4.nextInt();
-				System.out.println("month?");
-				int month = sc4.nextInt();
-				System.out.println("year?");
-				int year = sc4.nextInt();
-				LocalDate date = LocalDate.of(year, month, day);
-				System.out.println(services.findFlightsFromTo(dep, arr, date));
-				sc4.close();*/
+			Scanner sc41 = new Scanner(System.in);
+			System.out.println("input dep airport code ");
+			String dep = sc41.nextLine().trim();
+			System.out.println("input arr airport code ");
+			String arr = sc41.nextLine().trim();
+			System.out.println("date?");
+			System.out.println("day?");
+			int day = sc41.nextInt();
+			System.out.println("month?");
+			int month = sc41.nextInt();
+			System.out.println("year?");
+			int year = sc41.nextInt();
+			LocalDate date = LocalDate.of(year, month, day);
+			System.out.println(services.findFlightsFromTo(dep, arr, date));
 
 				break;
 			case 6:
-				/*Scanner sc5 = new Scanner(System.in);
+				Scanner sc51 = new Scanner(System.in);
 				System.out.println("input passenger id ");
-				String id = sc5.nextLine().trim();
+				String id = sc51.nextLine().trim();
 				services.findReservationsByPassengerId(id);
-				sc5.close();*/
 				break;
 				
 			case 7:
-				
+				Scanner sc52 = new Scanner(System.in);
+				System.out.println("input agent id ");
+				String agentid = sc52.nextLine().trim();
+				repository.findPassengersByAgentCode(agentid);
 				
 			case 8:
-				/*List<String> fls = new ArrayList<>();
-				Scanner sc6 = new Scanner(System.in);
+				Scanner sc61 = new Scanner(System.in);
+				List<String> fls = new ArrayList<>();
+				System.out.println("input agent id? ");
+				String agent1id = sc61.nextLine();
+				Agent agent=repository.getAgents().get(agent1id);
 				System.out.println("how many flights? ");
-				int number = sc6.nextInt();
+				int number = sc61.nextInt();
 				String code;
 				for (int k = 0; k < number; k++) {
 					System.out.println("Input flight number " + k + " id.");
-					code = sc6.nextLine();
+					code = sc61.nextLine();
 					fls.add(code);
 				}
 				Passenger p = new Passenger();
 				p = p.inputPassenger();
-				System.out.println(services.createReservation(p, fls));
-				sc6.close();*/
+				System.out.println(services.createReservation(agent, p, fls));
+				
 
 				break;
 			case 9:

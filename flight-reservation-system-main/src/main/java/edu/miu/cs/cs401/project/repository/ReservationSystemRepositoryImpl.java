@@ -353,6 +353,9 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 			}
 			
 		}
+		System.out.println();
+		System.out.println(flightInstances.size());
+		System.out.println();
 		for(FlightInstance flightInstance: flightInstances) {
 			Ticket ticket = new Ticket(flightInstance, reservation);
 			reservation.addTicket(ticket);
@@ -362,7 +365,7 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 		return reservation;
 	}
 	
-	public Reservation makeReservationByAgent(Agent agent ,Passenger passenger, Collection<FlightInstance> flightInstances) {
+	public Reservation makeReservationByAgent(Agent agent ,Passenger passenger, List<String> flightInstances) {
 		Reservation reservation =new Reservation(passenger,agent);
 		for(FlightInstance flightInstance: flightInstances) {
 			Ticket ticket = new Ticket(flightInstance, reservation);
