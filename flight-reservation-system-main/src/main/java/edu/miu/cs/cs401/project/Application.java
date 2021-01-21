@@ -4,10 +4,25 @@ import java.util.Scanner;
 
 import edu.miu.cs.cs401.project.service.ReservationSystemService;
 import edu.miu.cs.cs401.project.service.ServiceFactory;
+import edu.miu.cs.cs401.project.repository.RepositoryFactory; 
+import edu.miu.cs.cs401.project.repository. ReservationSystemRepository;
+import edu.miu.cs.cs401.project.domain.Address;
+import edu.miu.cs.cs401.project.domain.Airline;
+import edu.miu.cs.cs401.project.domain.Airport;
+import edu.miu.cs.cs401.project.domain.Flight;
+import edu.miu.cs.cs401.project.domain.Passenger;
+import edu.miu.cs.cs401.project.domain.Reservation;
+import edu.miu.cs.cs401.project.domain.Ticket;
+import edu.miu.cs.cs401.project.domain.Agent;
+import edu.miu.cs.cs401.project.domain.Crew;
+import edu.miu.cs.cs401.project.domain.Pilot;
+import edu.miu.cs.cs401.project.domain.FlightInstance;
 
 public class Application {
 
 	public static void main(String[] args) {
+
+		ReservationSystemRepository repository=RepositoryFactory.getReservationSystemRepository()
 		System.out.println("Airline Reservation System");
 		System.out.println();
 		System.out.println("Input 1 to log in as administrator");
@@ -29,7 +44,10 @@ public class Application {
 		int	j = sc.nextInt();
 		switch (j){
 			case 1:
-			// code block
+			Airport a=new Airport();
+			a=a.inputAirport();
+			repository.addAirport(a);
+			System.out.println(a+"added successfully");
 			break;
 		  	case 2:
 			// code block
