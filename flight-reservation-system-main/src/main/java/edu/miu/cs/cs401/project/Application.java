@@ -19,24 +19,6 @@ public class Application {
 		System.out.println("Input");
 		System.out.println("Input");
 		System.out.println("Input");
-		void addAirport(Airport a);
-
-	void deleteAirport(Airport a);
-
-	void addAirline(Airline a);
-
-	void deleteAirline(Airline a);
-
-	void addFlightToAirline(Flight f);
-
-	void deleteFlightFromAirline(Flight f);
-
-	void addFlightInstanceToFlight(Flight flight,FlightInstance flightInstance);
-
-	void deleteFlightInstanceFromFlight(Flight flight,FlightInstance flightInstance);
-
-
-
 		
 		/*
 		 * ReservationSystemService service =
