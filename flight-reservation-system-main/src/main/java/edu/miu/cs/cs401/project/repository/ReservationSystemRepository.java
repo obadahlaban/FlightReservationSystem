@@ -1,12 +1,12 @@
 package edu.miu.cs.cs401.project.repository;
 
 import java.util.Collection;
-<<<<<<< HEAD
+
 import java.util.List;
-=======
+
 import java.time.LocalDate;
 import java.util.Map;
->>>>>>> branch 'main' of https://github.com/obadahlaban/FlightReservationSystem.git
+
 
 import edu.miu.cs.cs401.project.domain.Agent;
 import edu.miu.cs.cs401.project.domain.Airline;

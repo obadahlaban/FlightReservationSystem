@@ -65,8 +65,8 @@ public class Reservation {
 	@Override
 	public String toString() {
 		String s="ReservationId = " + reservationId + "\nPassenger = " + passenger + "\nTickets = " + getTickets();
-		if (agentId==null) return s;
-		return "Agent Id = "+this.agentId+ "\n"+s;//why we have this
+		if (agent.getId()==null) return s;
+		return "Agent Id = "+this.agent.getId()+ "\n"+s;//why we have this
 	}
 	
 }
