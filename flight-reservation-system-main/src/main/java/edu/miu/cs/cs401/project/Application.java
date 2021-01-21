@@ -2,6 +2,9 @@ package edu.miu.cs.cs401.project;
 
 import java.time.LocalDate;
 import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
+
 
 import edu.miu.cs.cs401.project.service.ReservationSystemService;
 import edu.miu.cs.cs401.project.service.ServiceFactory;
@@ -127,18 +130,21 @@ public class Application {
 			  System.out.println("input airport code");
 			  String airportCode=scv.nextLine().trim();
 			  System.out.println(repository.findAirportByAirportCode(airportCode));
+			  scv.close();
 			break;
 			case 3:
 			Scanner sc2=new Scanner(System.in);
 			System.out.println("input city ");
 			String city=sc2.nextLine().trim();
 			System.out.println(repository.findAirportsByCity(city));
+			sc2.close();
 			break;
 			case 4:
 			Scanner sc3=new Scanner(System.in);
 			System.out.println("input airport code ");
 			String apc=sc3.nextLine().trim();
 			System.out.println(services.findAirlinesByAirportCode(apc));
+			sc3.close();
 			break;
 			case 5:
 			Scanner sc4=new Scanner(System.in);
@@ -155,16 +161,40 @@ public class Application {
 			int year=sc4.nextInt();
 			LocalDate date=LocalDate.of(year, month, day);
 			System.out.println(services.findFlightsFromTo(dep, arr, date));
+			sc4.close();
 
 			break;
 			case 6:
-			// code block
+			Scanner sc5=new Scanner(System.in);
+			System.out.println("input passenger id ");
+			String id=sc5.nextLine().trim();
+			services.findReservationsByPassengerId(id);
+			sc5.close();
 			break;
 			case 7:
-			// code block
+			List<FlightInstance> fls= new ArrayList<>();
+			Scanner sc6=new Scanner(System.in);
+			System.out.println("how many flights? ");
+			int number=sc6.nextInt();
+			FlightInstance f=new FlightInstance();
+			for (int k=0;k<number;k++){
+				System.out.println("Input flight number "+k+" data.");
+				f=f.inputFlightInstance();
+				fls.add(f);
+			}
+			Passenger p=new Passenger();
+			p=p.inputPassenger();
+			System.out.println(services.createReservation(p, fls));
+			sc6.close();
+
 			break;
 			case 8:
-			// code block
+			Scanner sc7=new Scanner(System.in);
+			System.out.println("reservationCode? ");
+			String reservationCode=sc7.nextLine();
+			services.confirmReservation(reservationCode);
+			System.out.println("reservation confirmed! ");
+			sc7.close();
 			break;
 			case 9:
 			// code block

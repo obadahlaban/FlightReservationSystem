@@ -128,7 +128,7 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 	private void setupFlights() {
 		setupAirports();
 		Flight flight1 = new Flight("flight1", 1, 230,  LocalTime.of(10,45,00),  LocalTime.of(15,45,00),airlines.get("1"), airports.get("CID"), airports.get("ORD"));
-		FlightInstance flightInstance1=new FlightInstance(flight1, "1", LocalDate.of(2020, 1, 13));
+		FlightInstance flightInstance1=new FlightInstance(flight1, "CIDORD1", LocalDate.of(2020, 1, 13));
 		
 		flightInstance1.addCrew(crewMembers.get(0));
 		flightInstance1.addCrew(crewMembers.get(1));
@@ -138,7 +138,7 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 		flight1.addFlightInstance(flightInstance1);
 		flights.put(flightInstance1, flight1);
 		
-		flightInstance1=new FlightInstance(flight1, "2", LocalDate.of(2021, 12, 23));
+		flightInstance1=new FlightInstance(flight1, "CIDORD2", LocalDate.of(2021, 12, 23));
 		flightInstance1.addCrew(crewMembers.get(3));
 		flightInstance1.addCrew(crewMembers.get(1));
 		flightInstance1.addCrew(crewMembers.get(4));
@@ -149,7 +149,7 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 
 		flight1 = new Flight("flight2", 2, 120,  LocalTime.of(12,45,00),  LocalTime.of(20,45,00), airlines.get("2"), airports.get("CID"), airports.get("JFK"));
 
-		flightInstance1=new FlightInstance(flight1, "2", LocalDate.of(2021, 12, 23));
+		flightInstance1=new FlightInstance(flight1, "CIDJFK1", LocalDate.of(2021, 12, 23));
 		flightInstance1.addCrew(crewMembers.get(3));
 		flightInstance1.addCrew(crewMembers.get(1));
 		flightInstance1.addCrew(crewMembers.get(4));
@@ -160,7 +160,7 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 
 		flight1 = new Flight("flight3", 3, 250,  LocalTime.of(19,00,00),  LocalTime.of(22,45,00), airlines.get("3"), airports.get("DFW"), airports.get("LAX"));
 
-		flightInstance1=new FlightInstance(flight1, "2", LocalDate.of(2021, 12, 23));
+		flightInstance1=new FlightInstance(flight1, "DFWLAX1", LocalDate.of(2021, 12, 23));
 		flightInstance1.addCrew(crewMembers.get(3));
 		flightInstance1.addCrew(crewMembers.get(1));
 		flightInstance1.addCrew(crewMembers.get(4));
@@ -171,7 +171,7 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 
 		flight1 = new Flight("flight4", 4, 61,  LocalTime.of(8,05,00),  LocalTime.of(10,45,00), airlines.get("4"), airports.get("DFW"), airports.get("CLT"));
 
-		flightInstance1=new FlightInstance(flight1, "2", LocalDate.of(2021, 12, 23));
+		flightInstance1=new FlightInstance(flight1, "DFWCLT1", LocalDate.of(2021, 12, 23));
 		flightInstance1.addCrew(crewMembers.get(3));
 		flightInstance1.addCrew(crewMembers.get(1));
 		flightInstance1.addCrew(crewMembers.get(4));
@@ -182,7 +182,7 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 
 		flight1 = new Flight("flight5", 5, 97,  LocalTime.of(17,30,00),  LocalTime.of(23,45,00), airlines.get("5"), airports.get("CLT"), airports.get("CID"));
 
-		flightInstance1=new FlightInstance(flight1, "2", LocalDate.of(2021, 12, 23));
+		flightInstance1=new FlightInstance(flight1, "CLTCID2", LocalDate.of(2021, 12, 23));
 		flightInstance1.addCrew(crewMembers.get(3));
 		flightInstance1.addCrew(crewMembers.get(1));
 		flightInstance1.addCrew(crewMembers.get(4));
@@ -267,7 +267,8 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 	public Collection<FlightInstance> findFlightsFromTo (String departureID, String arrivalID,LocalDate flightDate) {
 		List<FlightInstance> result = new ArrayList<>();
 		for (FlightInstance f:flights.keySet()){
-			if ((f.getFlight().getDepAirport().getId().equalsIgnoreCase(departureID))&&(f.getFlight().getArrAirport().getId().equalsIgnoreCase(arrivalID))&&(f.getDate().equals(flightDate))) result.add(f);
+			System.out.println(f.getFlight().getDepAirport().getId());
+			if ((f.getFlight().getDepAirport().getCode().equalsIgnoreCase(departureID))&&(f.getFlight().getArrAirport().getCode().equalsIgnoreCase(arrivalID))&&(f.getDate().equals(flightDate))) result.add(f);
 		}
 		return result;
 	}

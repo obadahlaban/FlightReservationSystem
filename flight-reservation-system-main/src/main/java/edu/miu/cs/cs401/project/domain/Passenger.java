@@ -3,6 +3,7 @@ package edu.miu.cs.cs401.project.domain;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Passenger {
 	private String id;
@@ -35,6 +36,31 @@ public class Passenger {
 		this.residanceAddress=residenceAdress;
 		this.agent=agent;
 	}
+	public Passenger inputPassenger() {
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.println("id=?");
+		String id=sc.nextLine();
+		System.out.println("firstName=?");
+		String firstName=sc.nextLine();
+		System.out.println("lastName=?");
+		String lastName=sc.nextLine();
+		System.out.println("dOB=?");
+		System.out.println("day=?");
+		int day=sc.nextInt();
+		System.out.println("month=?");
+		int month=sc.nextInt();
+		System.out.println("year=?");
+		int year=sc.nextInt();
+		LocalDate dob=LocalDate.of(year, month, day);
+		System.out.println("email=?");
+		String email=sc.nextLine();
+		Address a=new Address();
+		a=a.inputAddress();
+		sc.close();
+		return new Passenger( id, firstName, lastName, dob, email,a);
+	}
+public Passenger(){}
 
 	public String getId() {
 		return id;
