@@ -3,6 +3,9 @@ package edu.miu.cs.cs401.project.domain;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+import edu.miu.cs.cs401.project.domain.Airline;
+import edu.miu.cs.cs401.project.domain.Airport;
 
 public class Flight {
 	private String id;
@@ -28,6 +31,43 @@ public class Flight {
 		this.airline=airline;
 		this.depAirport=depAirport;
 		this.arrAirport=arrAirport;
+	}
+
+	public Flight inputFlight(){
+		Scanner sc = new Scanner(System.in);
+		System.out.println("id=?");
+		String id=sc.nextLine();
+		System.out.println("number=?");
+		int number=sc.nextInt();
+		System.out.println("capacity=?");
+		int capacity=sc.nextInt();
+		System.out.println("deptime=?");
+		System.out.println("hour=?");
+		int hour=sc.nextInt();
+		System.out.println("minute=?");
+		int minute=sc.nextInt();
+		System.out.println("second=?");
+		int second=sc.nextInt();
+		LocalTime deptime=LocalTime.of(hour, minute, second);
+		System.out.println("arrivtime=?");
+		System.out.println("hour=?");
+		hour=sc.nextInt();
+		System.out.println("minute=?");
+		minute=sc.nextInt();
+		System.out.println("second=?");
+		second=sc.nextInt();
+		LocalTime arrivtime=LocalTime.of(hour, minute, second);
+		System.out.println("Airline=?");
+		Airline al=new Airline();
+		Airline airline=al.inputAirline();
+		System.out.println("depAirport=?");
+		Airport a=new Airport();
+		Airport depAirport=a.inputAirport();
+		System.out.println("arrAirport=?");
+		Airport arrAirport=a.inputAirport();
+		sc.close();
+		return new Flight( id, number, capacity, deptime, arrivtime,airline,depAirport,arrAirport);
+
 	}
 
 	public String getId() {

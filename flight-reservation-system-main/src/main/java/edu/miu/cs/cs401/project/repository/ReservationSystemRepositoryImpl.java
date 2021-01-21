@@ -52,23 +52,28 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 	private void setupAirports() {
 		
 		Airport airport;
-		
-		airport = new Airport("CID", "Eastern Iowa Airport", new Address());
-		airports.put(airport.getCode(), airport);
-		
-		airport = new Airport("ORD", "Chicago O'Hare International Airport", new Address());
-		airports.put(airport.getCode(), airport);
-		
-		airport = new Airport("CLT", "Charlotte Douglas International Airport", new Address());
-		airports.put(airport.getCode(), airport);
-		
-		airport = new Airport("LAX", "Los Angeles International Airport", new Address());
-		airports.put(airport.getCode(), airport);
 
-		airport = new Airport("JFK", "John F. Kennedy International Airport", new Address());
+		Address a=new Address("1", "Arthur cullins", "Cedar Rapids", "IA", "52404");
+		airport = new Airport("CID", "Eastern Iowa Airport", a);
 		airports.put(airport.getCode(), airport);
+		a=new Address("2", "OHARE AVE", "Chicago", "IL", "60666");
 
-		airport = new Airport("DFW", "Dallas/Fort Worth International Airport", new Address());
+		airport = new Airport("ORD", "Chicago O'Hare International Airport", a);
+		airports.put(airport.getCode(), airport);
+		a=new Address("3", "Josh Brmgnhm", "Charlotte", "NC", "28208");
+
+		airport = new Airport("CLT", "Charlotte Douglas International Airport", a);
+		airports.put(airport.getCode(), airport);
+		a=new Address("4", "1 Ward way", "los Angeles", "CA", "90045");
+
+		airport = new Airport("LAX", "Los Angeles International Airport", a);
+		airports.put(airport.getCode(), airport);
+		a=new Address("5", "Queens", "Ney York", "NY", "11430");
+
+		airport = new Airport("JFK", "John F. Kennedy International Airport", a);
+		airports.put(airport.getCode(), airport);
+		a=new Address("6", "Aviation Dr", "Dallas", "TX", "75261");
+		airport = new Airport("DFW", "Dallas/Fort Worth International Airport",a);
 		airports.put(airport.getCode(), airport);
 		
 	}

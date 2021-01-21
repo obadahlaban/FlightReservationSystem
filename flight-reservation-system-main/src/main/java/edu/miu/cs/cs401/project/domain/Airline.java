@@ -2,6 +2,7 @@ package edu.miu.cs.cs401.project.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Airline {
 
@@ -20,6 +21,20 @@ public class Airline {
 		History = history;
 		this.flights = new ArrayList<Flight>();
 	}
+	public Airline inputAirline() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("id=?");
+		String id=sc.nextLine();
+		System.out.println("airlineCode=?");
+		String airlineCode=sc.nextLine();
+		System.out.println("name=?");
+		String name=sc.nextLine();
+		System.out.println("history=?");
+		String history=sc.nextLine();
+		sc.close();
+		return new Airline(  id,  airlineCode,  name,  history);
+	}
+	public Airline(){}
 	
 	
 	public String getID() {

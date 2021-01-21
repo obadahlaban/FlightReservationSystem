@@ -7,7 +7,7 @@ import java.util.UUID;
 
 public class Airport {
 	
-	private final String id;
+	private  String id;
 	
 	private String code;
 	
@@ -38,6 +38,9 @@ public class Airport {
 		sc.close();
 		return new Airport( code,  name,  a);
 
+
+	}
+	public Airport(){
 
 	}
 
