@@ -1,10 +1,6 @@
 package edu.miu.cs.cs401.project.domain;
 
-import java.util.Locale;
 import java.util.Scanner;
-import java.util.UUID;
-
-import com.github.javafaker.Faker;
 
 public class Address {
 	
