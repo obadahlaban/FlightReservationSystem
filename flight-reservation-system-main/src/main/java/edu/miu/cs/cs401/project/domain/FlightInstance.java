@@ -2,7 +2,8 @@ package edu.miu.cs.cs401.project.domain;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Scanner;
+import edu.miu.cs.cs401.project.domain.Flight;
 public class FlightInstance {
 	
 	private Flight flight;
@@ -20,6 +21,26 @@ public class FlightInstance {
 		pilots = new ArrayList<>();
 		crew = new ArrayList<>();
 		flight.addFlightInstance(this);
+	}
+	public FlightInstance inputFlight(){
+		Scanner sc = new Scanner(System.in);
+		System.out.println("flight=?");
+		Flight f= new Flight();
+		f.inputFlight();
+		System.out.println("id=?");
+		String id =sc.nextLine();
+		System.out.println("date=?");
+		System.out.println("day=?");
+		int day=sc.nextInt();
+		System.out.println("month=?");
+		int month=sc.nextInt();
+		System.out.println("year=?");
+		int year=sc.nextInt();
+		LocalDate date=LocalDate.of(year, month, day);
+		sc.close();
+	
+		return new FlightInstance(f, id, date);
+
 	}
 
 	public Flight getFlight() {

@@ -69,6 +69,9 @@ public class Flight {
 		return new Flight( id, number, capacity, deptime, arrivtime,airline,depAirport,arrAirport);
 
 	}
+	public Flight(){
+		
+	}
 
 	public String getId() {
 		return id;
