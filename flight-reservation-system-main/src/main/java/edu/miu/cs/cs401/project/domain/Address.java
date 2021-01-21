@@ -1,6 +1,7 @@
 package edu.miu.cs.cs401.project.domain;
 
 import java.util.Locale;
+import java.util.Scanner;
 import java.util.UUID;
 
 import com.github.javafaker.Faker;
@@ -16,16 +17,28 @@ public class Address {
 	
 	private String zip;
 
-	public Address() {
+	public Address(String id,String street,String city,String state,String zip) {
 		super();
-		Faker faker = new Faker(new Locale("us-en"));
+		this.street = street;
+		this.city = city;
+		this.state = state;
+		this.zip = zip;
+		this.id = id;
+	}
+	public Address inputAddress(){
+		Scanner sc = new Scanner(System.in);
+		System.out.println("id=?");
+		String idi=sc.nextLine();
+		System.out.println("street=?");
+		String streeti=sc.nextLine();
+		System.out.println("city=?");
+		String cityi=sc.nextLine();
+		System.out.println("state=?");
+		String statei=sc.nextLine();
+		System.out.println("zip=?");
+		String zipi=sc.nextLine();
+		return new Address( idi, streeti, cityi, statei, zipi);
 
-		this.street = faker.address().buildingNumber() + " " + faker.address().streetName();
-		this.city = faker.address().city();
-		this.state = faker.address().state();
-		this.zip = faker.address().zipCode();
-		
-		this.id = UUID.randomUUID().toString();
 	}
 
 	public String getId() {

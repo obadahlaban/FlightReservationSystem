@@ -26,7 +26,7 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 
 	private Map<String, Airline> airlines = new HashMap<>();
 
-	private Map<Flight, FlightInstance> flights = new HashMap<>();
+	private Map<FlightInstance, Flight> flights = new HashMap<>();
 
 	private Map<Integer, Passenger> passengers = new HashMap<>();
 	

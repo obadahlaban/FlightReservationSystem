@@ -21,9 +21,6 @@ public class Application {
 		System.out.println("Input 2 to add Airline");
 		System.out.println("Input 3 to delete Airline");
 		System.out.println("Input 4 to add flight to airline");
-		System.out.println("Input");
-		System.out.println("Input");
-		System.out.println("Input");
 		System.out.println("Input 5 to delete Flight From Airline");
 		System.out.println("Input 6 to add flightInstance To flight");
 		System.out.println("Input 7 to delete FlightInstance From Flight");

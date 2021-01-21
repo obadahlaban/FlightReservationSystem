@@ -68,8 +68,7 @@ public class ReservationSystemServiceImpl implements ReservationSystemService {
 
 	@Override
 	public void cancelReservation(String reservationCode) {
-		// TODO Auto-generated method stub
-		
+		repository.cancelReservation(reservationCode);
 	}
 
 	@Override
