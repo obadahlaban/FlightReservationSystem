@@ -98,25 +98,63 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 		flightInstance1.addCrew(crewMembers.get(0));
 		flightInstance1.addCrew(crewMembers.get(1));
 		flightInstance1.addCrew(crewMembers.get(2));
+		flightInstance1.addPilots(pilots.get(2));
+		flightInstance1.addPilots(pilots.get(1));
 		flight1.addFlightInstance(flightInstance1);
+		flights.put(flightInstance1, flight1);
 
-		flightInstance1=new FlightInstance(flight1, "2", LocalDate.of(2020, 1, 23));
+		flightInstance1=new FlightInstance(flight1, "2", LocalDate.of(2021, 12, 23));
 		flightInstance1.addCrew(crewMembers.get(3));
 		flightInstance1.addCrew(crewMembers.get(1));
 		flightInstance1.addCrew(crewMembers.get(4));
+		flightInstance1.addPilots(pilots.get(2));
+		flightInstance1.addPilots(pilots.get(1));
 		flight1.addFlightInstance(flightInstance1);
+		flights.put(flightInstance1, flight1);
 
-		flightInstance1=new FlightInstance(flight1, "3", LocalDate.of(2020, 2, 17));
-		flightInstance1.addCrew(crewMembers.get(2));
-		flightInstance1.addCrew(crewMembers.get(4));
+		flight1 = new Flight("flight2", 2, 120,  LocalTime.of(12,45,00),  LocalTime.of(20,45,00), airlines.get("2"), airports.get("CID"), airports.get("JFK"));
+
+		flightInstance1=new FlightInstance(flight1, "2", LocalDate.of(2021, 12, 23));
+		flightInstance1.addCrew(crewMembers.get(3));
 		flightInstance1.addCrew(crewMembers.get(1));
+		flightInstance1.addCrew(crewMembers.get(4));
+		flightInstance1.addPilots(pilots.get(2));
+		flightInstance1.addPilots(pilots.get(1));
 		flight1.addFlightInstance(flightInstance1);
+		flights.put(flightInstance1, flight1);
 
-		Flight flight2 = new Flight("flight2", 2, 120,  LocalTime.of(12,45,00),  LocalTime.of(20,45,00), airlines.get("2"), airports.get("CID"), airports.get("JFK"));
-		Flight flight3 = new Flight("flight3", 3, 250,  LocalTime.of(19,00,00),  LocalTime.of(22,45,00), airlines.get("3"), airports.get("DFW"), airports.get("LAX"));
-		Flight flight4 = new Flight("flight4", 4, 61,  LocalTime.of(8,05,00),  LocalTime.of(10,45,00), airlines.get("4"), airports.get("DFW"), airports.get("CLT"));
-		Flight flight5 = new Flight("flight5", 5, 97,  LocalTime.of(17,30,00),  LocalTime.of(23,45,00), airlines.get("5"), airports.get("CLT"), airports.get("CID"));
+		flight1 = new Flight("flight3", 3, 250,  LocalTime.of(19,00,00),  LocalTime.of(22,45,00), airlines.get("3"), airports.get("DFW"), airports.get("LAX"));
 
+		flightInstance1=new FlightInstance(flight1, "2", LocalDate.of(2021, 12, 23));
+		flightInstance1.addCrew(crewMembers.get(3));
+		flightInstance1.addCrew(crewMembers.get(1));
+		flightInstance1.addCrew(crewMembers.get(4));
+		flightInstance1.addPilots(pilots.get(2));
+		flightInstance1.addPilots(pilots.get(1));
+		flight1.addFlightInstance(flightInstance1);
+		flights.put(flightInstance1, flight1);
+
+		flight1 = new Flight("flight4", 4, 61,  LocalTime.of(8,05,00),  LocalTime.of(10,45,00), airlines.get("4"), airports.get("DFW"), airports.get("CLT"));
+
+		flightInstance1=new FlightInstance(flight1, "2", LocalDate.of(2021, 12, 23));
+		flightInstance1.addCrew(crewMembers.get(3));
+		flightInstance1.addCrew(crewMembers.get(1));
+		flightInstance1.addCrew(crewMembers.get(4));
+		flightInstance1.addPilots(pilots.get(2));
+		flightInstance1.addPilots(pilots.get(1));
+		flight1.addFlightInstance(flightInstance1);
+		flights.put(flightInstance1, flight1);
+
+		flight1 = new Flight("flight5", 5, 97,  LocalTime.of(17,30,00),  LocalTime.of(23,45,00), airlines.get("5"), airports.get("CLT"), airports.get("CID"));
+
+		flightInstance1=new FlightInstance(flight1, "2", LocalDate.of(2021, 12, 23));
+		flightInstance1.addCrew(crewMembers.get(3));
+		flightInstance1.addCrew(crewMembers.get(1));
+		flightInstance1.addCrew(crewMembers.get(4));
+		flightInstance1.addPilots(pilots.get(2));
+		flightInstance1.addPilots(pilots.get(1));
+		flight1.addFlightInstance(flightInstance1);
+		flights.put(flightInstance1, flight1);
 	}
 	private void setupCrew() {
 		Crew crew;
@@ -191,7 +229,7 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 	@Override
 	public Collection<Flight> findFlightsFromTo (String departureID, String arrivalID,LocalDate flightDate) {
 		List<Flight> result = new ArrayList<>();
-		for (FlightInstance f:flights.values()){
+		for (FlightInstance f:flights.keySet()){
 			if ((f.getFlight().getDepAirport().getId()==departureID)&&(f.getFlight().getArrAirport().getId()==arrivalID)&&(f.getDate()==flightDate)) result.add(f.getFlight());
 		}
 		return result;
@@ -241,26 +279,16 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 	}
 
 	public void addFlightInstanceToFlight(Flight flight,FlightInstance flightInstance){
-		Flight old=flight;
 		flight.addFlightInstance(flightInstance);
-
-		while (flights.remove(old)!=null){
-			flights.remove(old);
-		}
 		for(FlightInstance inst:flight.getFlightInstances()){
-		this.flights.put(flight,inst);
+		this.flights.put(inst,flight);
 		}
 	}
 
 	public void deleteFlightInstanceFromFlight(Flight flight,FlightInstance flightInstance){
-		Flight old=flight;
 		flight.deleteFlightInstance(flightInstance);
-
-		while (flights.remove(old)!=null){
-			flights.remove(old);
-		}
 		for(FlightInstance inst:flight.getFlightInstances()){
-		this.flights.put(flight,inst);
+		this.flights.put(inst,flight);
 		}
 		
 	}
@@ -278,7 +306,7 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 		reservation.confirm();
 	}
 	
-	public Reservation makeReservationByPassenger(Passenger passenger, List<FlightInstance> flightInstances) {
+	public Reservation makeReservationByPassenger(Passenger passenger, Collection<FlightInstance> flightInstances) {
 		Reservation reservation = new Reservation(passenger);
 		
 		for(FlightInstance flightInstance: flightInstances) {
@@ -290,7 +318,7 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 		return reservation;
 	}
 	
-	public Reservation makeReservationByAgent(Agent agent ,Passenger passenger, List<FlightInstance> flightInstances) {
+	public Reservation makeReservationByAgent(Agent agent ,Passenger passenger, Collection<FlightInstance> flightInstances) {
 		Reservation reservation =new Reservation(passenger,agent);
 		for(FlightInstance flightInstance: flightInstances) {
 			Ticket ticket = new Ticket(flightInstance, reservation);
