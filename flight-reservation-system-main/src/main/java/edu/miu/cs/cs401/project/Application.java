@@ -31,6 +31,7 @@ public class Application {
 		System.out.println();
 		Scanner sc = new Scanner(System.in);
 		 int i = sc.nextInt();
+
 		 if (i==1) {		
 		System.out.println("Input 1 to add Airport");
 		System.out.println("Input 2 to add Airline");
@@ -47,25 +48,51 @@ public class Application {
 			Airport a=new Airport();
 			a=a.inputAirport();
 			repository.addAirport(a);
-			System.out.println(a+"added successfully");
+			System.out.println(a+" added successfully");
 			break;
 		  	case 2:
-			// code block
+			  Airline al=new Airline();
+			  al=al.inputAirline();
+			  repository.addAirline(al);
+			  System.out.println(al+" added successfully");
 			break;
 			case 3:
-			// code block
+			Airline al1=new Airline();
+			al1=al1.inputAirline();
+			  repository.deleteAirline(al1);
+			  System.out.println(al1+" deleted successfully");
 			break;
 			case 4:
-			// code block
+			Flight f=new Flight();
+			f=f.inputFlight();
+			System.out.println("airline id?");
+			String id=sc.nextLine();
+			repository.addFlightToAirline(id, f);
+			System.out.println(f+" added successfully to "+id);
 			break;
 			case 5:
-			// code block
+			Flight f1=new Flight();
+			f1=f1.inputFlight();
+			System.out.println("airline id?");
+			String id1=sc.nextLine();
+			repository.deleteFlightFromAirline(id1, f1);
+			System.out.println(f1+" deleted successfully from "+id1);
 			break;
 			case 6:
-			// code block
+			Flight f2=new Flight();
+			f2=f2.inputFlight();
+			FlightInstance f3=new FlightInstance();
+			f3=f3.inputFlightInstance();
+			repository.addFlightInstanceToFlight(f2, f3);
+			System.out.println(f3+" added successfully to "+f2);
 			break;
 			case 7:
-			// code block
+			Flight f4=new Flight();
+			f4=f4.inputFlight();
+			FlightInstance f5=new FlightInstance();
+			f5=f5.inputFlightInstance();
+			repository.addFlightInstanceToFlight(f4, f5);
+			System.out.println(f5+" added successfully to "+f4);
 			break;
 			case 0:
 			// code block

@@ -22,7 +22,7 @@ public class FlightInstance {
 		crew = new ArrayList<>();
 		flight.addFlightInstance(this);
 	}
-	public FlightInstance inputFlight(){
+	public FlightInstance inputFlightInstance(){
 		Scanner sc = new Scanner(System.in);
 		System.out.println("flight=?");
 		Flight f= new Flight();
@@ -42,6 +42,7 @@ public class FlightInstance {
 		return new FlightInstance(f, id, date);
 
 	}
+	public FlightInstance(){}
 
 	public Flight getFlight() {
 		return this.flight;
