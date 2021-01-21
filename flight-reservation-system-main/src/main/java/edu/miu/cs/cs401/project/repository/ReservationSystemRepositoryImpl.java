@@ -305,7 +305,9 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 		return this.reservations;
 	}
 	
-
+	public Map<String, Agent> getAgents(){
+		return this.agents;
+	}
 	
 
 }

@@ -7,6 +7,7 @@ import edu.miu.cs.cs401.project.domain.Agent;
 import edu.miu.cs.cs401.project.domain.Airline;
 import edu.miu.cs.cs401.project.domain.Airport;
 import edu.miu.cs.cs401.project.domain.Flight;
+import edu.miu.cs.cs401.project.domain.FlightInstance;
 import edu.miu.cs.cs401.project.domain.Passenger;
 import edu.miu.cs.cs401.project.domain.Reservation;
 import edu.miu.cs.cs401.project.repository.ReservationSystemRepository;
@@ -52,13 +53,13 @@ public class ReservationSystemServiceImpl implements ReservationSystemService {
 	}
 
 	@Override
-	public Reservation createReservation(Passenger passenger, Collection<Flight> flights) {
-		return repository.makeReservationByPassenger(passenger, flightInstances);
+	public Reservation createReservation(Passenger passenger, Collection<FlightInstance> flights) {
+		return repository.makeReservationByPassenger(passenger, flights);
 	}
 
 	@Override
-	public Reservation createReservation(Agent agent, Passenger passenger, Collection<Flight> flights) {
-		return repository.makeReservationByAgent(agent, passenger, flightInstances);
+	public Reservation createReservation(Agent agent, Passenger passenger, Collection<FlightInstance> flights) {
+		return repository.makeReservationByAgent(agent, passenger, flights);
 	}
 
 	@Override
@@ -79,7 +80,7 @@ public class ReservationSystemServiceImpl implements ReservationSystemService {
 	@Override
 	public void confirmReservation(String reservationCode, String agentCode) {
 		repository.getReservations().get(reservationCode).confirm();
-		repository.getReservations().get(reservationCode).setAgentId(agentCode);
+		repository.getReservations().get(reservationCode).setAgent(repository.getAgents().get(agentCode));
 		
 	}
 

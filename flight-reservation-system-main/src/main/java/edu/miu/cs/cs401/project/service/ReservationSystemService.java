@@ -9,6 +9,7 @@ import edu.miu.cs.cs401.project.domain.Airport;
 import edu.miu.cs.cs401.project.domain.Flight;
 import edu.miu.cs.cs401.project.domain.Passenger;
 import edu.miu.cs.cs401.project.domain.Reservation;
+import edu.miu.cs.cs401.project.domain.FlightInstance;
 
 public interface ReservationSystemService {
 	
@@ -26,9 +27,9 @@ public interface ReservationSystemService {
 	
 	Collection<Passenger> findPassengersByAgentCode(String agentCode);
 	
-	Reservation createReservation(Passenger passenger, Collection<Flight> flights); // Passenger reserves
+	Reservation createReservation(Passenger passenger, Collection<FlightInstance> flights); // Passenger reserves
 	
-	Reservation createReservation(Agent agent, Passenger passenger, Collection<Flight> flights); // Agent reserves
+	Reservation createReservation(Agent agent, Passenger passenger, Collection<FlightInstance> flights); // Agent reserves
 	
 	void confirmReservation(String reservationCode);
 	

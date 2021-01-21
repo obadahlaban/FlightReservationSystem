@@ -36,9 +36,9 @@ public interface ReservationSystemRepository {
 	
 	void confirmReservation(String reservationCode);
 	
-	Reservation makeReservationByPassenger(Passenger passenger, List<FlightInstance> flightInstances);
+	Reservation makeReservationByPassenger(Passenger passenger, Collection<FlightInstance> flightInstances);
 	
-	public Reservation makeReservationByAgent(Agent agent ,Passenger passenger, List<FlightInstance> flightInstances);
+	public Reservation makeReservationByAgent(Agent agent ,Passenger passenger, Collection<FlightInstance> flightInstances);
 	
 	void addAirport(Airport a);
 
@@ -56,5 +56,9 @@ public interface ReservationSystemRepository {
 
 	void deleteFlightInstanceFromFlight(Flight flight,FlightInstance flightInstance);
 	public Map<String,Reservation> getReservations();
+
+	Map<String, Agent> getAgents();
+
+	
 
 }
