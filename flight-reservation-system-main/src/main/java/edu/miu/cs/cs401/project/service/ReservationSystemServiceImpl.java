@@ -2,6 +2,8 @@ package edu.miu.cs.cs401.project.service;
 
 import java.time.LocalDate;
 import java.util.Collection;
+import java.util.List;
+
 
 import edu.miu.cs.cs401.project.domain.Agent;
 import edu.miu.cs.cs401.project.domain.Airline;
@@ -53,7 +55,7 @@ public class ReservationSystemServiceImpl implements ReservationSystemService {
 	}
 
 	@Override
-	public Reservation createReservation(Passenger passenger, Collection<FlightInstance> flights) {
+	public Reservation createReservation(Passenger passenger, List<String> flights) {
 		return repository.makeReservationByPassenger(passenger, flights);
 	}
 
