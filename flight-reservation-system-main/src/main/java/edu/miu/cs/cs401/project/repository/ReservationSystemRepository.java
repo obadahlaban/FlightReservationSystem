@@ -26,6 +26,8 @@ public interface ReservationSystemRepository {
 	Collection<Passenger> findPassengersByAgentCode(String agentCode);
 	
 	void cancelReservation(String reservationCode);
+	
+	void confirmReservation(String reservationCode);
 
 	void addAirport(Airport a);
 

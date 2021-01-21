@@ -276,6 +276,15 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 		Reservation reservation =reservations.get(reservationCode);
 		reservation.confirm();
 	}
+	
+	public void makeReservation(Passenger passenger, List<Flight>flights) {
+		//Reservation reservation =new Reservation();
+	}
+	
+	public void makeReservation(Agent agent ,Passenger passenger, List<Flight>flights) {
+		//Reservation reservation =new Reservation();
+	}
+	
 
 	public static void main (String[] args){
 		ReservationSystemRepositoryImpl c= new ReservationSystemRepositoryImpl();

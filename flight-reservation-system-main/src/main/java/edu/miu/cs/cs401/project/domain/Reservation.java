@@ -64,7 +64,7 @@ public class Reservation {
 		this.passenger = passenger;
 	}
 	public void confirm() {
-		this.status=Status.CONFIRM_PURCHASE;
+		this.status=Status.CONFIRMED_RESERVATION;
 	}
 
 	@Override
