@@ -1,7 +1,12 @@
 package edu.miu.cs.cs401.project.repository;
 
 import java.util.Collection;
+<<<<<<< HEAD
 import java.util.List;
+=======
+import java.time.LocalDate;
+import java.util.Map;
+>>>>>>> branch 'main' of https://github.com/obadahlaban/FlightReservationSystem.git
 
 import edu.miu.cs.cs401.project.domain.Agent;
 import edu.miu.cs.cs401.project.domain.Airline;
@@ -21,7 +26,7 @@ public interface ReservationSystemRepository {
 	
 	Collection<Airline> findAirlinesByAirportCode(String airportCode);
 	
-	Collection<Flight> findFlightsFromTo(Airport departure, Airport arrival);
+	Collection<Flight> findFlightsFromTo(String departureID, String arrivalID,LocalDate flightDate);
 	
 	Collection<Reservation> findReservationsByPassengerId(String passengerId);
 	
@@ -50,5 +55,6 @@ public interface ReservationSystemRepository {
 	void addFlightInstanceToFlight(Flight flight,FlightInstance flightInstance);
 
 	void deleteFlightInstanceFromFlight(Flight flight,FlightInstance flightInstance);
+	public Map<String,Reservation> getReservations();
 
 }

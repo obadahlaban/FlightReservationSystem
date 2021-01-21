@@ -27,7 +27,7 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 
 	private Map<String, Airline> airlines = new HashMap<>();
 
-	private Map<Flight, FlightInstance> flights = new HashMap<>();
+	private Map<FlightInstance, Flight> flights = new HashMap<>();
 
 	private Map<Integer, Passenger> passengers = new HashMap<>();
 	
@@ -189,10 +189,10 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 	}
 
 	@Override
-	public Collection<Flight> findFlightsFromTo (Airport departure, Airport arrival) {
+	public Collection<Flight> findFlightsFromTo (String departureID, String arrivalID,LocalDate flightDate) {
 		List<Flight> result = new ArrayList<>();
 		for (FlightInstance f:flights.values()){
-			if ((f.getFlight().getDepAirport()==departure)&&(f.getFlight().getArrAirport()==arrival)) result.add(f.getFlight());
+			if ((f.getFlight().getDepAirport().getId()==departureID)&&(f.getFlight().getArrAirport().getId()==arrivalID)&&(f.getDate()==flightDate)) result.add(f.getFlight());
 		}
 		return result;
 	}
@@ -301,11 +301,10 @@ public class ReservationSystemRepositoryImpl implements ReservationSystemReposit
 	}
 	
 
-	public static void main (String[] args){
-		ReservationSystemRepositoryImpl c= new ReservationSystemRepositoryImpl();
-		System.out.println(c.findAirportByAirportCode("CID"));
-		System.out.println(c.findAirportsByCity("CID"));
+	public Map<String,Reservation> getReservations(){
+		return this.reservations;
 	}
+	
 
 	
 

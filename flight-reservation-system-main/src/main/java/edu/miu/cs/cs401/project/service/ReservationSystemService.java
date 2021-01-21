@@ -22,7 +22,7 @@ public interface ReservationSystemService {
 	
 	Collection<Flight> findFlightsFromTo(String departure, String arrival, LocalDate flightDate);
 	
-	Collection<Reservation> findReservationsByPassengerId(Integer passengerId);
+	Collection<Reservation> findReservationsByPassengerId(String passengerId);
 	
 	Collection<Passenger> findPassengersByAgentCode(String agentCode);
 	

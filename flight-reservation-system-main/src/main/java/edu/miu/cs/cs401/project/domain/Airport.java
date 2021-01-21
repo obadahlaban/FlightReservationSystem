@@ -2,6 +2,7 @@ package edu.miu.cs.cs401.project.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.util.UUID;
 
 public class Airport {
@@ -24,6 +25,19 @@ public class Airport {
 		this.name = name;
 		this.address = address;
 		this.id = UUID.randomUUID().toString();
+	}
+	public Airport inputAirport(){
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter code");
+		String code=sc.nextLine().trim();
+		System.out.println("Enter name");
+		String name=sc.nextLine().trim();
+		System.out.println("Enter address");
+		Address a=a.inputAddress();
+		return new Airport( code,  name,  a);
+
+
+    String userName = myObj.nextLine()
 	}
 
 	public String getId() {
